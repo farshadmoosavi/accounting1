@@ -1,0 +1,90 @@
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+i {
+  margin-right: 0.3rem;
+}
+
+.calendar-button {
+  width: 57px !important;
+  max-height: 38px;
+  margin-left: 10px;
+  margin-right: -9px;
+  font-size: 10px; /* or adjust to the appropriate font size */
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+.productTable-custom {
+  width: 100% !important;
+}
+
+.header {
+  background-color: #e6e6e6;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+select {
+  width: 100px;
+  margin: 0;
+  background-color: #fffefd;
+  border: solid 1px #4126d6;
+  color: #000;
+  outline: none;
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  text-align: right;
+
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none"><path d="M4 5L8 9L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  background-repeat: no-repeat;
+  background-position: left 0.5rem center;
+  padding-right: 1rem;
+  background-size: 1rem;
+}
+
+.arrow {
+  position: relative;
+}
+.arrow:after {
+  content: "";
+  font: 1em "Consolas", monospace;
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  padding: 0 0 -25% 0;
+  margin-right: 3px;
+  border-width: 8px 0 8px 8px;
+  border-style: solid;
+  border-color: transparent #f15922;
+  pointer-events: none;
+}
+
+.arrow:before {
+  content: "";
+  right: 6px;
+  top: 0px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  pointer-events: none;
+  display: block;
+}

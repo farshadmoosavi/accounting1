@@ -8,6 +8,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -22,9 +23,10 @@ i {
   max-height: 38px;
   margin-left: 10px;
   margin-right: -9px;
-  font-size: 10px; /* or adjust to the appropriate font size */
+  font-size: 12px !important; /* or adjust to the appropriate font size */
   text-overflow: clip;
   white-space: nowrap;
+  padding-left:3px !important;
 }
 
 .productTable-custom {

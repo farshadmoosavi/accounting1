@@ -1,15 +1,8 @@
-
+import DatePicker from "react-datepicker2";
 import React, { useState, useEffect, useRef } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import DatePicker from "react-date-picker2";
-import "react-date-picker/dist/DatePicker.css";
-import "./persian-datepicker.css";
-import "persian-datepicker/dist/css/persian-datepicker.css";
-
-
 
 const CustomerIdentity = () => {
   useEffect(() => {
@@ -25,9 +18,8 @@ const CustomerIdentity = () => {
     placeOfIssue: "",
     identityCode: "",
     cardExpirationDate: null,
-    dateOfBirth: "",
+    birthDay: "",
     valueTaxNumber: "",
-    highlightDates: [],
   });
 
   const [errors, setErrors] = useState({
@@ -369,42 +361,12 @@ const CustomerIdentity = () => {
     });
   };
 
-  const ChoosePersianCalendar = () => {
-    const datePickerRef = useRef(null);
-
-    const handleDateChange = (date) => {
-      setState((prevState) => ({
-        ...prevState,
-        cardExpirationDate: date,
-      }));
-    };
-
-    useEffect(() => {
-      if (datePickerRef.current) {
-        datePickerRef.current.inputField.focus();
-      }
-    }, []);
-
-    return (
-      <DatePicker
-        ref={datePickerRef}
-        calendarClassName="persian-calendar"
-        onChange={handleDateChange}
-        value={state.cardExpirationDate}
-        inputPlaceholder="تاریخ"
-        locale="fa"
-        shouldHighlightWeekends
-        shouldHighlightToday
-        highlightDates={state.highlightDates}
-        inputClassName="calendar-input"
-      />
-    );
-  };
+  const ChoosePersianCalendar = () => {};
 
   return (
     <div className="row">
       <div className="col-lg-6 col-md-7 mx-auto">
-        <div className="card border-primary shadow my-5">
+        <div className="card border-primary shadow my-3">
           <div className="card-header border-bottom border-primary">
             <h4
               style={{ fontSize: "40px" }}
@@ -412,22 +374,6 @@ const CustomerIdentity = () => {
             >
               Register
             </h4>
-            {/* <ul className="text-danger">
-                {Object.keys(errors).map((element) => {
-                  if (dirty[element]) {
-                    return errors[element].map((err) => {
-                      return (
-                        <li key={err}>
-                          {" "}
-                          ERROR {dirty.key} :{err}
-                        </li>
-                      );
-                    });
-                  } else {
-                    return "";
-                  }
-                })}
-              </ul> */}
           </div>
           <div className="card-body border-primary">
             {/* kindOfCustomer || نوع مشتری */}
@@ -587,7 +533,7 @@ const CustomerIdentity = () => {
               </label>
             </div>
 
-            {/* identityCode || کد شناساسس */}
+            {/* identityCode || کد شناسایی */}
             <div className="row mb-1">
               <div className="col-lg-4">
                 <input
@@ -607,12 +553,12 @@ const CustomerIdentity = () => {
             </div>
 
             {/* cardExpirationDate || انقضای کارت */}
-            <div className="row mb-3">
+            <div className="row mb-1">
               <button
                 className="btn btn-primary calendar-button"
                 onClick={ChoosePersianCalendar}
               >
-                شمسی
+                تاریخ شمسی
               </button>
 
               <div className="col-lg-3 ">
@@ -632,98 +578,49 @@ const CustomerIdentity = () => {
               </label>
             </div>
 
-            {/* Gender */}
-            <div className="row mb-3">
-              <label className="col-lg-4">Gender</label>
-              <div className="col-lg-8">
-                <div className="form-check">
-                  <input
-                    name="gender"
-                    type="radio"
-                    value="male"
-                    id="male"
-                    className="form-check-input"
-                    checked={state.gender === "male" ? true : false}
-                    onChange={(e) =>
-                      setState({ ...state, [e.target.name]: e.target.value })
-                    }
-                  />
-                  <label htmlFor="male" className="form-check-inline">
-                    Male
-                  </label>
-                </div>
-                <div className="form-check">
-                  <input
-                    name="gender"
-                    type="radio"
-                    value="female"
-                    id="female"
-                    className="form-check-input"
-                    checked={state.gender === "female" ? true : false}
-                    onChange={(e) =>
-                      setState({ ...state, [e.target.name]: e.target.value })
-                    }
-                  />
-                  <label htmlFor="female" className="form-check-inline">
-                    Female
-                  </label>
-                </div>
-                <div className="text-danger">
-                  {dirty["gender"] && errors["gender"][0]
-                    ? errors["gender"]
-                    : ""}
-                </div>
-              </div>
-            </div>
+            {/* birthDay || تاریخ تولد*/}
+            <div className="row mb-1">
+              <button
+                className="btn btn-primary calendar-button"
+                onClick={ChoosePersianCalendar}
+              >
+                تاریخ شمسی
+              </button>
 
-            {/* country */}
-            <div className="row mb-3">
-              <label className="col-lg-4 " htmlFor="country">
-                Country
-              </label>
-
-              <div className="col-lg-8">
-                <select
-                  id="country"
-                  name="country"
+              <div className="col-lg-3 ">
+                <input
+                  id="birthDay"
+                  name="birthDay"
+                  type="date"
                   className="form-control"
-                  value={state.country}
+                  value={state.birthDay}
                   onChange={(e) =>
                     setState({ ...state, [e.target.name]: e.target.value })
                   }
-                >
-                  {nationalities.map((res) => (
-                    <option key={"countryItem" + res.id} vlaue={res.id}>
-                      {res.countryName}
-                    </option>
-                  ))}
-                </select>
+                />
               </div>
+              <label className="col-lg-4" htmlFor="birthDay">
+                تاریخ تولد
+              </label>
             </div>
-            {/* receive NewsLetters */}
-            <div className="row mb-3">
-              <label className="col-lg-4"></label>
-              <div className="col-lg-8">
-                <div className="form-check">
-                  <input
-                    name="receiveNewsLetters"
-                    type="checkbox"
-                    value="true"
-                    id="receiveNewsLetters"
-                    className="form-check-input"
-                    checked={state.receiveNewsLetters === "true" ? true : false}
-                    onChange={(e) =>
-                      setState({ ...state, [e.target.name]: e.target.value })
-                    }
-                  />
-                  <label
-                    htmlFor="receiveNewsLetters"
-                    className="form-check-inline"
-                  >
-                    ReceiveNewsLetters
-                  </label>
-                </div>
+
+            {/* valueTaxNumber || شماره مالیاتی ارزش */}
+            <div className="row mb-1">
+              <div className="col-lg-4">
+                <input
+                  id="valueTaxNumber"
+                  name="valueTaxNumber"
+                  type="text"
+                  className="form-control"
+                  value={state.valueTaxNumber}
+                  onChange={(e) =>
+                    setState({ ...state, [e.target.name]: e.target.value })
+                  }
+                />
               </div>
+              <label className="col lg-4" htmlFor="valueTaxNumber">
+                شماره مالیاتی ارزش
+              </label>
             </div>
           </div>
           {/*footer*/}

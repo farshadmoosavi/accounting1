@@ -13,6 +13,7 @@
     "react": "^18.2.0",
     "react-date-picker": "^10.0.3",
     "react-date-picker2": "^6.3.0",
+    "react-datepicker2": "^3.3.13",
     "react-datetime-picker": "^5.0.3",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",

@@ -1,5 +1,5 @@
-import DatePicker from "react-datepicker2";
-import React, { useState, useEffect, useRef } from "react";
+
+import React, { useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Grid } from "@material-ui/core";

@@ -365,20 +365,20 @@ const CustomerIdentity = () => {
 
   return (
     <div className="row">
-      <div className="col-lg-6 col-md-7 mx-auto">
+      <div className="col-lg-4 col-md-7 mx-auto">
         <div className="card border-primary shadow my-3">
-          <div className="card-header border-bottom border-primary">
+          {/* <div className="card-header border-bottom border-primary">
             <h4
               style={{ fontSize: "40px" }}
               className="text-primary text-center"
             >
               Register
             </h4>
-          </div>
+          </div> */}
           <div className="card-body border-primary">
             {/* kindOfCustomer || نوع مشتری */}
-            <div dir="ltr" className="row mb-1">
-              <div className="col-lg-4">
+            <div className="row mb-1">
+              <div className="col-lg-9">
                 <select
                   id="kindOfCustomer"
                   name="kindOfCustomer"
@@ -396,14 +396,14 @@ const CustomerIdentity = () => {
                 </select>
               </div>
 
-              <label className="col-lg-4" htmlFor="kindOfCustomer">
-                نوع مشتری
+              <label className="col-lg-3" htmlFor="kindOfCustomer">
+              <span style={{ color: 'red' }}>*</span> نوع مشتری
               </label>
             </div>
 
             {/* fullName  || نام کامل */}
             <div className="row mb-1">
-              <div className="col-lg-4">
+              <div className="col-lg-9">
                 <input
                   id="fullName"
                   name="fullName"
@@ -425,14 +425,14 @@ const CustomerIdentity = () => {
                 </div>
               </div>
 
-              <label className="col-lg-4" htmlFor="password">
-                نام کامل
+              <label className="col-lg-3" htmlFor="password">
+              <span style={{ color: 'red' }}>*</span> نام کامل
               </label>
             </div>
 
             {/* fatherName || نام پدر */}
             <div className="row mb-1">
-              <div className="col-lg-4">
+              <div className="col-lg-9">
                 <input
                   id="fullName"
                   name="fullName"
@@ -453,14 +453,14 @@ const CustomerIdentity = () => {
                     : ""}
                 </div>
               </div>
-              <label className="col lg-4" htmlFor="fatherName">
+              <label className="col lg-3" htmlFor="fatherName">
                 نام پدر
               </label>
             </div>
 
             {/* nationality || ملیت  */}
             <div dir="ltr" className="row mb-1">
-              <div className="col-lg-4">
+              <div className="col-lg-9">
                 <select
                   id="nationality"
                   name="nationality"
@@ -478,14 +478,14 @@ const CustomerIdentity = () => {
                 </select>
               </div>
 
-              <label className="col-lg-4" htmlFor="kindOfCustomer">
+              <label className="col-lg-3" htmlFor="kindOfCustomer">
                 ملیت
               </label>
             </div>
 
             {/* typeOfIdentityCode || نوع کدشناسایی */}
             <div dir="ltr" className="row mb-1">
-              <div className="col-lg-4">
+              <div className="col-lg-9">
                 <select
                   id="typeOfIdentityCode"
                   name="typeOfIdentityCode"
@@ -503,14 +503,14 @@ const CustomerIdentity = () => {
                 </select>
               </div>
 
-              <label className="col-lg-4" htmlFor="typeOfIdentityCode">
+              <label className="col-lg-3" htmlFor="typeOfIdentityCode">
                 نوع کد شناسایی
               </label>
             </div>
 
             {/* placeOfIssue || محل صدور  */}
             <div dir="ltr" className="row mb-1">
-              <div className="col-lg-4">
+              <div className="col-lg-9">
                 <select
                   id="placeOfIssue"
                   name="placeOfIssue"
@@ -528,14 +528,14 @@ const CustomerIdentity = () => {
                 </select>
               </div>
 
-              <label className="col-lg-4" htmlFor="placeOfIssue">
+              <label className="col-lg-3" htmlFor="placeOfIssue">
                 محل صدور
               </label>
             </div>
 
             {/* identityCode || کد شناسایی */}
             <div className="row mb-1">
-              <div className="col-lg-4">
+              <div className="col-lg-9">
                 <input
                   id="identityCode"
                   name="identityCode"
@@ -547,7 +547,7 @@ const CustomerIdentity = () => {
                   }
                 />
               </div>
-              <label className="col lg-4" htmlFor="identityCode">
+              <label className="col lg-3" htmlFor="identityCode">
                 کد شناسایی
               </label>
             </div>
@@ -561,7 +561,7 @@ const CustomerIdentity = () => {
                 تاریخ شمسی
               </button>
 
-              <div className="col-lg-3 ">
+              <div className="col-lg-7 ">
                 <input
                   id="cardExpirationDate"
                   name="cardExpirationDate"
@@ -573,7 +573,7 @@ const CustomerIdentity = () => {
                   }
                 />
               </div>
-              <label className="col-lg-4" htmlFor="cardExpirationDate">
+              <label className="col-lg-3" htmlFor="cardExpirationDate">
                 انقضای کارت
               </label>
             </div>
@@ -587,7 +587,7 @@ const CustomerIdentity = () => {
                 تاریخ شمسی
               </button>
 
-              <div className="col-lg-3 ">
+              <div className="col-lg-7 ">
                 <input
                   id="birthDay"
                   name="birthDay"
@@ -599,14 +599,14 @@ const CustomerIdentity = () => {
                   }
                 />
               </div>
-              <label className="col-lg-4" htmlFor="birthDay">
+              <label className="col-lg-3" htmlFor="birthDay">
                 تاریخ تولد
               </label>
             </div>
 
             {/* valueTaxNumber || شماره مالیاتی ارزش */}
             <div className="row mb-1">
-              <div className="col-lg-4">
+              <div className="col-lg-9">
                 <input
                   id="valueTaxNumber"
                   name="valueTaxNumber"
@@ -618,20 +618,20 @@ const CustomerIdentity = () => {
                   }
                 />
               </div>
-              <label className="col lg-4" htmlFor="valueTaxNumber">
-                شماره مالیاتی ارزش
+              <label className="col lg-3" htmlFor="valueTaxNumber">
+                 شماره مالیاتی ارزش 
               </label>
             </div>
           </div>
           {/*footer*/}
-          <div className="card-footer text-center">
+          {/* <div className="card-footer text-center">
             <div className="m-1">{message}</div>
             <div>
               <button className="btn btn-primary m-2" onClick={onRegisterClick}>
                 Register
               </button>
             </div>
-          </div>
+          </div> */}
           {/* end of footer */}
         </div>
       </div>

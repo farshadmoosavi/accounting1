@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic&display=swap");
 
 body {
   margin: 0;
@@ -7,7 +8,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -19,14 +19,19 @@ i {
 }
 
 .calendar-button {
-  width: 57px !important;
+  width: 74px !important;
   max-height: 38px;
   margin-left: 10px;
   margin-right: -9px;
   font-size: 12px !important; /* or adjust to the appropriate font size */
   text-overflow: clip;
   white-space: nowrap;
-  padding-left:3px !important;
+  padding-left: 6px !important;
+}
+.row {
+  text-align: right;
+  font-family: "Noto Sans Arabic", sans-serif;
+  font-size: 0.7rem;
 }
 
 .productTable-custom {
@@ -53,7 +58,7 @@ select {
   appearance: none;
   cursor: pointer;
   text-align: right;
-
+  font-size: 0.8rem;
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none"><path d="M4 5L8 9L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
   background-repeat: no-repeat;
   background-position: left 0.5rem center;

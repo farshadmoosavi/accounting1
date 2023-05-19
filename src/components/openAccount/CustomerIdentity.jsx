@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -397,7 +396,7 @@ const CustomerIdentity = () => {
               </div>
 
               <label className="col-lg-3" htmlFor="kindOfCustomer">
-              <span style={{ color: 'red' }}>*</span> نوع مشتری
+                <span style={{ color: "red" }}>*</span> نوع مشتری
               </label>
             </div>
 
@@ -419,19 +418,19 @@ const CustomerIdentity = () => {
                   }}
                 />
                 <div className="text-danger">
-                  {dirty["password"] && errors["password"][0]
-                    ? errors["password"]
+                  {dirty["fullName"] && errors["fullName"][0]
+                    ? errors["fullName"]
                     : ""}
                 </div>
               </div>
 
-              <label className="col-lg-3" htmlFor="password">
-              <span style={{ color: 'red' }}>*</span> نام کامل
+              <label className="col-lg-3" htmlFor="fullName">
+                <span style={{ color: "red" }}>*</span> نام کامل
               </label>
             </div>
 
             {/* fatherName || نام پدر */}
-            <div className="row mb-1">
+            <div className="row mb-1 form">
               <div className="col-lg-9">
                 <input
                   id="fullName"
@@ -459,7 +458,7 @@ const CustomerIdentity = () => {
             </div>
 
             {/* nationality || ملیت  */}
-            <div dir="ltr" className="row mb-1">
+            <div dir="ltr" className="row mb-1 form">
               <div className="col-lg-9">
                 <select
                   id="nationality"
@@ -484,7 +483,7 @@ const CustomerIdentity = () => {
             </div>
 
             {/* typeOfIdentityCode || نوع کدشناسایی */}
-            <div dir="ltr" className="row mb-1">
+            <div dir="ltr" className="row mb-1 form">
               <div className="col-lg-9">
                 <select
                   id="typeOfIdentityCode"
@@ -509,7 +508,7 @@ const CustomerIdentity = () => {
             </div>
 
             {/* placeOfIssue || محل صدور  */}
-            <div dir="ltr" className="row mb-1">
+            <div dir="ltr" className="row mb-1 form">
               <div className="col-lg-9">
                 <select
                   id="placeOfIssue"
@@ -534,7 +533,7 @@ const CustomerIdentity = () => {
             </div>
 
             {/* identityCode || کد شناسایی */}
-            <div className="row mb-1">
+            <div className="row mb-1 form">
               <div className="col-lg-9">
                 <input
                   id="identityCode"
@@ -553,7 +552,7 @@ const CustomerIdentity = () => {
             </div>
 
             {/* cardExpirationDate || انقضای کارت */}
-            <div className="row mb-1">
+            <div className="row mb-1 form">
               <button
                 className="btn btn-primary calendar-button"
                 onClick={ChoosePersianCalendar}
@@ -579,7 +578,7 @@ const CustomerIdentity = () => {
             </div>
 
             {/* birthDay || تاریخ تولد*/}
-            <div className="row mb-1">
+            <div className="row mb-1  form">
               <button
                 className="btn btn-primary calendar-button"
                 onClick={ChoosePersianCalendar}
@@ -605,7 +604,7 @@ const CustomerIdentity = () => {
             </div>
 
             {/* valueTaxNumber || شماره مالیاتی ارزش */}
-            <div className="row mb-1">
+            <div className="row mb-1 form">
               <div className="col-lg-9">
                 <input
                   id="valueTaxNumber"
@@ -619,7 +618,7 @@ const CustomerIdentity = () => {
                 />
               </div>
               <label className="col lg-3" htmlFor="valueTaxNumber">
-                 شماره مالیاتی ارزش 
+                شماره مالیاتی ارزش
               </label>
             </div>
           </div>

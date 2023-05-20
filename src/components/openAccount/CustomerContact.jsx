@@ -172,7 +172,7 @@ const CustomerContact = () => {
     postalCode: "",
     paymentLimit: null,
     allowedAmountOfReference: "",
-    grouping: ""
+    grouping: "",
   });
 
   return (
@@ -207,8 +207,8 @@ const CustomerContact = () => {
         {/* محدودیت سقف پرداخت */}
         <TabPane tabId="tab1">
           <div className="row">
-            <div className="col-lg-4 col-md-7 mx-auto">
-              <div className="card border-primary shadow my-3">
+            <div className=" mx-auto"> {/*col-lg-4  col-md-7*/}
+              <div className="card border-primary shadow">{/*my-3*/}
                 <div className="card-body border-primary">
                   {/* اعمال محدودیت */}
                   <div className="row mb-1 form">
@@ -284,10 +284,7 @@ const CustomerContact = () => {
                         }
                       >
                         {groupings.map((res) => (
-                          <option
-                            key={"grouping" + res.id}
-                            vlaue={res.id}
-                          >
+                          <option key={"grouping" + res.id} vlaue={res.id}>
                             {res.kind}
                           </option>
                         ))}
@@ -307,8 +304,8 @@ const CustomerContact = () => {
         {/* آدرس فعلی */}
         <TabPane tabId="tab2">
           <div className="row">
-            <div className="col-lg-4 col-md-7 mx-auto">
-              <div className="card border-primary shadow my-3">
+            <div className="mx-auto">{/*col-lg-4  col-md-7*/}
+              <div className="card border-primary shadow">{/*my-3*/}
                 <div className="card-body border-primary">
                   {/* country  || کشور */}
                   <div className="row mb-1 form">
@@ -417,8 +414,8 @@ const CustomerContact = () => {
         {/* تماس */}
         <TabPane tabId="tab3">
           <div className="row">
-            <div className="col-lg-4 col-md-7 mx-auto">
-              <div className="card border-primary shadow my-3">
+            <div className=" mx-auto">{/*col-lg-4  col-md-7*/}
+              <div className="card border-primary shadow">{/*my-3*/}
                 <div className="card-body border-primary">
                   {/* mobilePhoe  || موبایل */}
                   <div className="row mb-1 form">

@@ -3,13 +3,23 @@
 .customer {
   margin-top: 1rem;
   font-family: "Noto Sans Arabic", sans-serif;
+//   justify-content: center;
+  //   display: flex;
+  width: 29rem;
+  //   display: inline-block; /* or inline-flex */
+  border: 1px solid #1c59f5; /* Add border style */
+  border-radius: 5px; /* Optional: Add border radius for rounded corners */
+  padding: 0.7rem; /* Optional: Add padding to create spacing between the border and content */
+//   flex-direction: column;
+//   align-items: center;
+  margin: 0 auto;  // bring the whole tabs into the middle
 
   .nav-tabs {
     border-bottom: none;
     cursor: pointer;
-    display: flex;
+    // display: flex;
     justify-content: center;
-    // align-items: center;
+    align-items: center;
     font-size: 0.7rem;
   }
   .row {
@@ -20,7 +30,7 @@
   }
   .form {
     display: flex;
-    align-items: center;  /* Vertically center the labels */
+    align-items: center; /* Vertically center the labels */
   }
 
   .nav-tabs .nav-link {
@@ -36,6 +46,7 @@
 
   .tab-content {
     border: 1px solid #dee2e6;
+    // align-items: center;
   }
 
   .tab-content h4 {

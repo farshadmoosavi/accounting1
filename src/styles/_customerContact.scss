@@ -13,20 +13,24 @@
 //   flex-direction: column;
 //   align-items: center;
   margin: 0 auto;  // bring the whole tabs into the middle
+  min-height: 17rem;
 
   .nav-tabs {
     border-bottom: none;
     cursor: pointer;
     // display: flex;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
     font-size: 0.7rem;
   }
   .row {
     text-align: right;
     font-family: "Noto Sans Arabic", sans-serif;
     font-size: 0.7rem;
-    flex: 1;
+    // flex: 1;
+  }
+  .card{
+    min-height: 13rem;
   }
   .form {
     display: flex;
@@ -34,7 +38,8 @@
   }
 
   .nav-tabs .nav-link {
-    background-color: #f8f9fa;
+    background-color: #aad5ff;
+    margin-left: 0.1rem;
     color: #212529;
     border: none;
   }
@@ -46,7 +51,7 @@
 
   .tab-content {
     border: 1px solid #dee2e6;
-    // align-items: center;
+     align-items: right;
   }
 
   .tab-content h4 {

@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic&display=swap");
+form{
+    margin-bottom: 0.8rem;
+}
+.blue-line {
+    border-top: 1px solid rgb(87, 87, 87);
+  }
+  
+  .component-title {
+    color: #007bff; /* Set the color to blue */
+    font-size: 1.5rem; /* Adjust the font size */
+    margin-bottom: 1rem; /* Add some spacing below the title */
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .table-container {
+    width: 100%;
+    overflow: hidden;
+    font-family: 'Noto Sans Arabic', sans-serif;
+  }
+
+  .custom-table-container{
+    font-family: 'Noto Sans Arabic', sans-serif;
+  }
+  
+  table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+    background-color: rgb(219, 217, 217);
+    font-family: 'Noto Sans Arabic', sans-serif;
+  }
+  
+  th,
+  td {
+    padding: 8px 12px; /* Adjust the padding values as needed */
+    font-family: 'Noto Sans Arabic', sans-serif;
+  }
+  
+  .th-name {
+    min-width: 170px;
+  }
+  
+  .th-code {
+    min-width: 100px;
+  }
+  
+  .th-population {
+    min-width: 170px;
+  }
+  
+  .td-name {
+    text-align: left;
+  }
+  
+  .td-code {
+    text-align: left;
+  }
+  
+  .td-population {
+    text-align: right;
+  }
+  
+  
+  

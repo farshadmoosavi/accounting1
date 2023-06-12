@@ -6,10 +6,12 @@
 
 
 .activeList{
-    margin-left: 15%;
+    margin-left: 0%;
 }
 
 // partial scss:
 @import "./openAccount";
 @import "./customerIdentity";
 @import "./customerContact";
+@import "./accountingBook";
+@import "./description"

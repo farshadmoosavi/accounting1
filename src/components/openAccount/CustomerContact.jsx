@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Nav, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
 
 const CustomerContact = () => {
-  const [activeTab, setActiveTab] = useState("tab3");
+  const [activeTab, setActiveTab] = useState("tab2");
 
   const toggleTab = (tab) => {
     if (activeTab !== tab) {
@@ -177,6 +177,7 @@ const CustomerContact = () => {
 
   return (
     <div className="customer">
+       <h4 className="component-title">تماس </h4>
       <Nav tabs>
         <NavItem>
           <NavLink
@@ -184,6 +185,15 @@ const CustomerContact = () => {
             onClick={() => toggleTab("tab1")}
           >
             محدودیت سقف پرداخت
+          </NavLink>
+        </NavItem>
+        
+        <NavItem>
+          <NavLink
+            className={activeTab === "tab3" ? "active" : ""}
+            onClick={() => toggleTab("tab3")}
+          >
+            تماس
           </NavLink>
         </NavItem>
         <NavItem>
@@ -194,20 +204,12 @@ const CustomerContact = () => {
             آدرس فعلی
           </NavLink>
         </NavItem>
-        <NavItem>
-          <NavLink
-            className={activeTab === "tab3" ? "active" : ""}
-            onClick={() => toggleTab("tab3")}
-          >
-            تماس
-          </NavLink>
-        </NavItem>
       </Nav>
       <TabContent activeTab={activeTab}>
         {/* محدودیت سقف پرداخت */}
         <TabPane tabId="tab1">
           <div className="row">
-            <div className=" mx-auto"> {/*col-lg-4  col-md-7*/}
+            <div className=" ml-auto"> {/*col-lg-4  col-md-7*/}
               <div className="card border-primary shadow">{/*my-3*/}
                 <div className="card-body border-primary">
                   {/* اعمال محدودیت */}

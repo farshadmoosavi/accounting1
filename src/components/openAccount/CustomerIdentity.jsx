@@ -365,7 +365,7 @@ const CustomerIdentity = () => {
   return (
     <div className="row identity">
       <div className=" col-md-8">
-        <div className="card border-primary shadow my-4">
+        <div className="card border-primary shadow">
           <div className="card-body border-primary">
           <h4 className="component-title">مشخصات مشتری</h4>
             {/* kindOfCustomer || نوع مشتری */}

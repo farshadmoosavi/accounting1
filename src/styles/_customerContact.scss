@@ -12,11 +12,9 @@
   padding: 0.7rem; /* Optional: Add padding to create spacing between the border and content */
   margin-left: auto;
   float: right; // bring the whole component to right
-
-  //   flex-direction: column;
-  //   align-items: center;
   margin: 0 auto; // bring the whole tabs into the middle
   min-height: 17rem;
+  margin-bottom: 0.5rem;
 
   .nav-tabs {
     border-bottom: none;

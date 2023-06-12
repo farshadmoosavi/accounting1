@@ -26,10 +26,10 @@ function OpenAccount() {
       <div className="col-lg-6">
         <div className="row">
           <div className="col">
-            <CustomerIdentity style={{ width: "100%" }} />
+            <CustomerIdentity />
           </div>
         </div>
-        <div style={{ width: "29.8rem", height: "1rem" }}>
+        <div>
           <Description />
         </div>
       </div>

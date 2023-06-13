@@ -37,7 +37,7 @@ const AccountingBook = () => {
 
   const columns = [
     { id: "name", label: "مانده بستانکار", minWidth: 70 },
-    { id: "code", label: "مانده بدهکار", minWidth: 70 },
+    { id: "code", label: "مانده بدهکار", minWidth: 70, format: (value) => value.toLocaleString("en-US") },
     {
       id: "population",
       label: "ارز",
@@ -48,7 +48,7 @@ const AccountingBook = () => {
   ];
 
   function createData(name, code, population) {
-    return { name, code, population};
+    return { name, code, population };
   }
 
   const rows = [

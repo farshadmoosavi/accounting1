@@ -42,7 +42,7 @@ const AccountingBook = () => {
       id: "population",
       label: "ارز",
       minWidth: 70,
-      align: "left",
+      align: "center",
       format: (value) => value.toLocaleString("en-US"),
     },
   ];
@@ -53,8 +53,8 @@ const AccountingBook = () => {
 
   const rows = [
     createData("India", 2357022, "€"),
-    createData("China", 223499, 14035003651),
-    createData("Italy", 6844958, 6048397340),
+    createData("China", 223499, "$"),
+    createData("Italy", 6844958, "£"),
   ];
 
   const [page, setPage] = React.useState(0);

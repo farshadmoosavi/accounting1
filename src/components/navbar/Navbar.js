@@ -56,13 +56,23 @@ function ResponsiveAppBar() {
 
     //  creating sub menu for سند جدید = newDocument
     const subMenuNewDocument = ['نقد و چک', 'عملیات بانکی', 'انتقال به حساب', 'انتقال (پرداخت به جای ما)', 'خرید و فروش',
-     'خرید و فروش دوگانه', 'ارسال حواله', 'دریافت حواله', 'TTارسال حواله', 'خرید و فروش نقدی', 'سند روزنامه', 'دستور پرداخت', 'دستور پرداخت', 'کمیسیون همکار', 'خرید و فروش دوگانه نفت', 'خرید و فروش طلا'];
+        'خرید و فروش دوگانه', 'ارسال حواله', 'دریافت حواله', 'TTارسال حواله', 'خرید و فروش نقدی', 'سند روزنامه', 'دستور پرداخت', 'کمیسیون همکار', 'خرید و فروش دوگانه نفت', 'خرید و فروش طلا'];
     const [anchorElSubMenuNewDocument, setAnchorElSubMenuNewDocument] = useState(null);
-    const handleCloseSubMenu = () => {
+    const handleCloseSubMenuNewDocument = () => {
         setAnchorElSubMenuNewDocument(null);
     };
-    const handleOpenSubMenu = (event) => {
+    const handleOpenSubMenuNewDocument = (event) => {
         setAnchorElSubMenuNewDocument(event.currentTarget);
+    };
+ //  creating sub menu for پروسه ها = Processes
+ const subMenuProcesses = ['داشبورد کاربر', 'لیست معاملات روزانه', 'لیست معاملات دوگانه', 'صورت حساب', 'مانده حساب',
+        'چک های دریافتی', 'چک های پرداختی', 'بازبینی اسناد', 'لیست دستورات پرداخت', 'پرداخت های بجای ما', 'TT حواله های', 'Pending vouchers', 'صدور حواله ها', 'دریافت حواله ها', 'حواله های ارسالی', 'حواله های دریافتی', 'واریزهای بانکی مشتریان'];
+    const [anchorElSubMenuProcesses, setAnchorElSubMenuProcesses] = useState(null);
+    const handleCloseSubMenuProcesses = () => {
+        setAnchorElSubMenuProcesses(null);
+    };
+    const handleOpenSubMenuProcesses = (event) => {
+        setAnchorElSubMenuProcesses(event.currentTarget);
     };
 
     return (
@@ -106,12 +116,12 @@ function ResponsiveAppBar() {
                                 anchorEl={anchorElNav}
                                 anchorOrigin={{
                                     vertical: 'bottom',
-                                    horizontal: 'left',
+                                    horizontal: 'right',
                                 }}
                                 keepMounted
                                 transformOrigin={{
                                     vertical: 'top',
-                                    horizontal: 'left',
+                                    horizontal: 'right',
                                 }}
                                 open={Boolean(anchorElNav)}
                                 onClose={handleCloseNavMenu}
@@ -148,13 +158,11 @@ function ResponsiveAppBar() {
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                             {pages.map((page) => (
+
                                 <Fragment key={page}>
                                     {page === 'معرفی ها' ? (
                                         <Fragment>
-                                            <Button
-                                                onClick={handleOpenSubMenuIntroduction}
-                                                sx={{ my: 1, color: 'white', display: 'block' }}
-                                            >
+                                            <Button onClick={(event) => handleOpenSubMenuIntroduction(event, page)} sx={{ my: 1, color: 'white', display: 'block' }}>
                                                 {page}
                                             </Button>
                                             <Menu
@@ -162,19 +170,70 @@ function ResponsiveAppBar() {
                                                 anchorEl={anchorElSubMenuIntroduction}
                                                 anchorOrigin={{
                                                     vertical: 'bottom',
-                                                    horizontal: 'right',
+                                                    horizontal: 'left',
                                                 }}
-                                                keepMounted
                                                 transformOrigin={{
                                                     vertical: 'top',
-                                                    horizontal: 'right',
+                                                    horizontal: 'left',
                                                 }}
                                                 open={Boolean(anchorElSubMenuIntroduction)}
                                                 onClose={handleCloseSubMenuIntroduction}
                                             >
                                                 {subMenuIntroductions.map((item) => (
                                                     <MenuItem key={item} onClick={handleCloseNavMenu}>
-                                                        <Typography textAlign="right">{item}</Typography>
+                                                        <Typography className='subMenu' >{item}</Typography>
+                                                    </MenuItem>
+                                                ))}
+                                            </Menu>
+                                        </Fragment>
+                                    ) : page === 'سند جدید' ? (
+                                        <Fragment>
+                                            <Button onClick={(event) => handleOpenSubMenuNewDocument(event, page)} sx={{ my: 1, color: 'white', display: 'block' }}>
+                                                {page}
+                                            </Button>
+                                            <Menu
+                                                id="submenu-document-appbar"
+                                                anchorEl={anchorElSubMenuNewDocument}
+                                                anchorOrigin={{
+                                                    vertical: 'bottom',
+                                                    horizontal: 'right',
+                                                }}
+                                                transformOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'right',
+                                                }}
+                                                open={Boolean(anchorElSubMenuNewDocument)}
+                                                onClose={handleCloseSubMenuNewDocument}
+                                            >
+                                                {subMenuNewDocument.map((item) => (
+                                                    <MenuItem key={item} onClick={handleCloseNavMenu}>
+                                                        <Typography className='subMenu'>{item}</Typography>
+                                                    </MenuItem>
+                                                ))}
+                                            </Menu>
+                                        </Fragment>
+                                    ) : page === 'پروسه ها' ? (
+                                        <Fragment>
+                                            <Button onClick={(event) =>  handleOpenSubMenuProcesses(event, page)} sx={{ my: 1, color: 'white', display: 'block' }}>
+                                                {page}
+                                            </Button>
+                                            <Menu
+                                                id="submenu-document-appbar"
+                                                anchorEl={anchorElSubMenuProcesses}
+                                                anchorOrigin={{
+                                                    vertical: 'bottom',
+                                                    horizontal: 'right',
+                                                }}
+                                                transformOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'right',
+                                                }}
+                                                open={Boolean(anchorElSubMenuProcesses)}
+                                                onClose={handleCloseSubMenuProcesses}
+                                            >
+                                                {subMenuProcesses.map((item) => (
+                                                    <MenuItem key={item} onClick={handleCloseNavMenu}>
+                                                        <Typography className='subMenu'>{item}</Typography>
                                                     </MenuItem>
                                                 ))}
                                             </Menu>
@@ -185,7 +244,9 @@ function ResponsiveAppBar() {
                                         </Button>
                                     )}
                                 </Fragment>
+
                             ))}
+                            
                         </Box>
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open settings">
@@ -211,7 +272,7 @@ function ResponsiveAppBar() {
                             >
                                 {settings.map((setting) => (
                                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">{setting}</Typography>
+                                        <Typography textAlign="right">{setting}</Typography>
                                     </MenuItem>
                                 ))}
                             </Menu>

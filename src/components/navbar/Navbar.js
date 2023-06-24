@@ -1,287 +1,207 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useState } from 'react';
-import { Fragment } from 'react';
+import React from 'react';
 
-const pages = ['خروج از سیستم', 'سرویس ها', 'مدیریت سیستم', 'گزارش ها', 'پروسه ها', 'سند جدید', 'معرفی ها'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
-function ResponsiveAppBar() {
-    const [anchorElNav, setAnchorElNav] = useState(null);
-    const [anchorElUser, setAnchorElUser] = useState(null);
-
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
-
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
-
-    const defaultTheme = createTheme({
-        typography: {
-            fontFamily: '"Noto Sans Arabic", sans-serif',
-        },
-    });
-
-    // creating sub menu for معرفی = Introduction
-    const subMenuIntroductions = ['حساب جدید', 'دسته چک جدید', 'گروه بندی مشتریان', 'نرخ های پیش فرض', 'حساب های مرتبط'];
-    const [anchorElSubMenuIntroduction, setAnchorElSubMenuIntroduction] = useState(null);
-    const handleCloseSubMenuIntroduction = () => {
-        setAnchorElSubMenuIntroduction(null);
-    };
-    const handleOpenSubMenuIntroduction = (event) => {
-        setAnchorElSubMenuIntroduction(event.currentTarget);
-    };
-
-    //  creating sub menu for سند جدید = newDocument
-    const subMenuNewDocument = ['نقد و چک', 'عملیات بانکی', 'انتقال به حساب', 'انتقال (پرداخت به جای ما)', 'خرید و فروش',
-        'خرید و فروش دوگانه', 'ارسال حواله', 'دریافت حواله', 'TTارسال حواله', 'خرید و فروش نقدی', 'سند روزنامه', 'دستور پرداخت', 'کمیسیون همکار', 'خرید و فروش دوگانه نفت', 'خرید و فروش طلا'];
-    const [anchorElSubMenuNewDocument, setAnchorElSubMenuNewDocument] = useState(null);
-    const handleCloseSubMenuNewDocument = () => {
-        setAnchorElSubMenuNewDocument(null);
-    };
-    const handleOpenSubMenuNewDocument = (event) => {
-        setAnchorElSubMenuNewDocument(event.currentTarget);
-    };
- //  creating sub menu for پروسه ها = Processes
- const subMenuProcesses = ['داشبورد کاربر', 'لیست معاملات روزانه', 'لیست معاملات دوگانه', 'صورت حساب', 'مانده حساب',
-        'چک های دریافتی', 'چک های پرداختی', 'بازبینی اسناد', 'لیست دستورات پرداخت', 'پرداخت های بجای ما', 'TT حواله های', 'Pending vouchers', 'صدور حواله ها', 'دریافت حواله ها', 'حواله های ارسالی', 'حواله های دریافتی', 'واریزهای بانکی مشتریان'];
-    const [anchorElSubMenuProcesses, setAnchorElSubMenuProcesses] = useState(null);
-    const handleCloseSubMenuProcesses = () => {
-        setAnchorElSubMenuProcesses(null);
-    };
-    const handleOpenSubMenuProcesses = (event) => {
-        setAnchorElSubMenuProcesses(event.currentTarget);
-    };
-
+const Navbar = () => {
     return (
-        <ThemeProvider theme={defaultTheme}>
-            <AppBar position="static">
-                <Container maxWidth="xl">
-                    <Toolbar disableGutters >
-                        <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="a"
-                            href="/"
-                            sx={{
-                                mr: 85,
-                                display: { xs: 'none', md: 'flex' },
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.0rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            حسابان
-                        </Typography>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary navbar-right">
+            <div className="container-fluid ustify-content-end">
+                <a className="navbar-brand" href="#">حسابان</a>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="main_nav">
+                    <ul className="navbar-nav">
+                        <li className="nav-item active"> <a className="nav-link " href="#">خروج از سیستم</a> </li>
+                        <li className="nav-item dropdown" id="myDropdown">
+                            <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">سرویس ها</a>
+                            <ul className="dropdown-menu dropdown-menu-end">
+                                <li> <a className="dropdown-item" href="#">&laquo;    سرویس موبایل </a>
+                                    <ul className="submenu dropdown-menu dropdown-menu-end">
+                                        <li><a className="dropdown-item" href="#">اخبار جدید</a></li>
+                                        <li><a className="dropdown-item" href="#">فعالسازی ورود مشتری</a></li>
+                                        <li><a className="dropdown-item" href="#">تنظیمات سرویس</a></li>
+                                    </ul>
+                                </li>
+                                <li> <a className="dropdown-item" href="#">&laquo;    سرویس پیام رسانی </a>
+                                    <ul className="submenu dropdown-menu dropdown-menu-end messaging-service">
+                                        <li><a className="dropdown-item" href="#">تنظیمات سرویس</a></li>
+                                        <li><a className="dropdown-item" href="#">تاریخچه ارسال</a></li>
+                                        <li><a className="dropdown-item" href="#">ارسال پیام</a></li>
+                                        <li><a className="dropdown-item" href="#">ارسال مانده حسابها</a></li>
+                                    </ul>
+                                </li>
 
-                        {/* <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}> */}
-                        <Box sx={{ display: { xs: 'flex', md: 'none' }, mr: 3 }}>
-                            <IconButton
-                                size="large"
-                                aria-label="account of current user"
-                                aria-controls="menu-appbar"
-                                aria-haspopup="true"
-                                onClick={handleOpenNavMenu}
-                                color="inherit"
-                            >
-                                <MenuIcon />
-                            </IconButton>
-                            <Menu
-                                id="menu-appbar"
-                                anchorEl={anchorElNav}
-                                anchorOrigin={{
-                                    vertical: 'bottom',
-                                    horizontal: 'right',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                open={Boolean(anchorElNav)}
-                                onClose={handleCloseNavMenu}
-                                sx={{
-                                    display: { xs: 'block', md: 'none' },
-                                }}
-                            >
-                                {pages.map((page) => (
-                                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                        <Typography textAlign="right">{page}</Typography>
-                                    </MenuItem>
-                                ))}
-                            </Menu>
-                        </Box>
-                        <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-                        <Typography
-                            variant="h5"
-                            noWrap
-                            component="a"
-                            href=""
-                            sx={{
-                                mr: 2,
-                                display: { xs: 'flex', md: 'none' },
-                                flexGrow: 1,
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            LOGO
-                        </Typography>
-
-                        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                            {pages.map((page) => (
-
-                                <Fragment key={page}>
-                                    {page === 'معرفی ها' ? (
-                                        <Fragment>
-                                            <Button onClick={(event) => handleOpenSubMenuIntroduction(event, page)} sx={{ my: 1, color: 'white', display: 'block' }}>
-                                                {page}
-                                            </Button>
-                                            <Menu
-                                                id="submenu-appbar"
-                                                anchorEl={anchorElSubMenuIntroduction}
-                                                anchorOrigin={{
-                                                    vertical: 'bottom',
-                                                    horizontal: 'left',
-                                                }}
-                                                transformOrigin={{
-                                                    vertical: 'top',
-                                                    horizontal: 'left',
-                                                }}
-                                                open={Boolean(anchorElSubMenuIntroduction)}
-                                                onClose={handleCloseSubMenuIntroduction}
-                                            >
-                                                {subMenuIntroductions.map((item) => (
-                                                    <MenuItem key={item} onClick={handleCloseNavMenu}>
-                                                        <Typography className='subMenu' >{item}</Typography>
-                                                    </MenuItem>
-                                                ))}
-                                            </Menu>
-                                        </Fragment>
-                                    ) : page === 'سند جدید' ? (
-                                        <Fragment>
-                                            <Button onClick={(event) => handleOpenSubMenuNewDocument(event, page)} sx={{ my: 1, color: 'white', display: 'block' }}>
-                                                {page}
-                                            </Button>
-                                            <Menu
-                                                id="submenu-document-appbar"
-                                                anchorEl={anchorElSubMenuNewDocument}
-                                                anchorOrigin={{
-                                                    vertical: 'bottom',
-                                                    horizontal: 'right',
-                                                }}
-                                                transformOrigin={{
-                                                    vertical: 'top',
-                                                    horizontal: 'right',
-                                                }}
-                                                open={Boolean(anchorElSubMenuNewDocument)}
-                                                onClose={handleCloseSubMenuNewDocument}
-                                            >
-                                                {subMenuNewDocument.map((item) => (
-                                                    <MenuItem key={item} onClick={handleCloseNavMenu}>
-                                                        <Typography className='subMenu'>{item}</Typography>
-                                                    </MenuItem>
-                                                ))}
-                                            </Menu>
-                                        </Fragment>
-                                    ) : page === 'پروسه ها' ? (
-                                        <Fragment>
-                                            <Button onClick={(event) =>  handleOpenSubMenuProcesses(event, page)} sx={{ my: 1, color: 'white', display: 'block' }}>
-                                                {page}
-                                            </Button>
-                                            <Menu
-                                                id="submenu-document-appbar"
-                                                anchorEl={anchorElSubMenuProcesses}
-                                                anchorOrigin={{
-                                                    vertical: 'bottom',
-                                                    horizontal: 'right',
-                                                }}
-                                                transformOrigin={{
-                                                    vertical: 'top',
-                                                    horizontal: 'right',
-                                                }}
-                                                open={Boolean(anchorElSubMenuProcesses)}
-                                                onClose={handleCloseSubMenuProcesses}
-                                            >
-                                                {subMenuProcesses.map((item) => (
-                                                    <MenuItem key={item} onClick={handleCloseNavMenu}>
-                                                        <Typography className='subMenu'>{item}</Typography>
-                                                    </MenuItem>
-                                                ))}
-                                            </Menu>
-                                        </Fragment>
-                                    ) : (
-                                        <Button onClick={handleCloseNavMenu} sx={{ my: 1, color: 'white', display: 'block' }}>
-                                            {page}
-                                        </Button>
-                                    )}
-                                </Fragment>
-
-                            ))}
-                            
-                        </Box>
-                        <Box sx={{ flexGrow: 0 }}>
-                            <Tooltip title="Open settings">
-                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                                </IconButton>
-                            </Tooltip>
-                            <Menu
-                                sx={{ mt: '45px' }}
-                                id="menu-appbar"
-                                anchorEl={anchorElUser}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                open={Boolean(anchorElUser)}
-                                onClose={handleCloseUserMenu}
-                            >
-                                {settings.map((setting) => (
-                                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="right">{setting}</Typography>
-                                    </MenuItem>
-                                ))}
-                            </Menu>
-                        </Box>
-
-                    </Toolbar>
-                </Container>
-            </AppBar>
-        </ThemeProvider>
+                                <li><a className="dropdown-item" href="#">Email</a></li>
+                            </ul>
+                        </li>
+                        <li className="nav-item dropdown" id="myDropdown">
+                            <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">مدیریت سیستم</a>
+                            <ul className="dropdown-menu dropdown-menu-end">
+                                <li> <a className="dropdown-item" href="#">  &laquo;      مدیریت کل</a>
+                                    <ul className="submenu dropdown-menu dropdown-menu-end">
+                                        <li><a className="dropdown-item" href="#">مشخصات شرکت</a></li>
+                                        <li><a className="dropdown-item" href="#">افتتاح سال مالی جدید</a></li>
+                                        <li><a className="dropdown-item" href="#">ارزهای عملیاتی</a></li>
+                                        <li><a className="dropdown-item" href="#">Trading View Rates</a></li>
+                                        <li><a className="dropdown-item" href="#">امینت ارتباط</a></li>
+                                        <li><a className="dropdown-item" href="#">دوره های مالی</a></li>
+                                        <li><a className="dropdown-item border-down" href="#">حسابهای محرمانه</a></li>
+                                        <li><a className="dropdown-item border-down" href="#">(Back-up) فایل پشتیبان </a></li>
+                                        <li><a className="dropdown-item disabled" href="#">فعالسازی (لایسنس)</a></li>
+                                        <li><a className="dropdown-item" href="#">اتصالات دیتابیس</a></li>
+                                        <li><a className="dropdown-item border-down" href="#">جلسات کاری</a></li>
+                                        <li><a className="dropdown-item" href="#">تغییر زیان سیستم</a></li>
+                                        <li><a className="dropdown-item" href="#">Google Authenticator</a></li>
+                                    </ul>
+                                </li>
+                                <li> <a className="dropdown-item " href="#">&laquo;    مدیریت شعبه</a>
+                                    <ul className="submenu dropdown-menu dropdown-menu-end branch-management">
+                                        <li><a className="dropdown-item" href="#">تنظیمات شعبه</a></li>
+                                        <li><a className="dropdown-item" href="#">کاربران شعبه</a></li>
+                                        <li><a className="dropdown-item" href="#">تاریخ و ساعت</a></li>
+                                        <li><a className="dropdown-item" href="#">تاییدیه فکس های دریافتی</a></li>
+                                        <li><a className="dropdown-item" href="#">شماره گذاری حوالجات</a></li>
+                                        <li><a className="dropdown-item" href="#">تنظیمات ارتباط بین شعب</a></li>
+                                    </ul>
+                                </li>
+                                <li><a className="dropdown-item" href="#">تغییر پسوورد</a></li>
+                                <li><a className="dropdown-item" href="#">کشورها و شهرها</a></li>
+                                <li> <a className="dropdown-item" href="#">سند ورود حسابها به سیستم</a></li>
+                                <li> <a className="dropdown-item" href="#">&laquo;    شخصی سازی</a>
+                                    <ul className="submenu dropdown-menu dropdown-menu-end personalization">
+                                        <li><a className="dropdown-item" href="#">تصویر پس زمینه</a></li>
+                                        <li> <a className="dropdown-item " href="#">&laquo;    تغییر پوسته نرم افزار </a>
+                                            <ul className="submenu dropdown-menu dropdown-menu-end branch-management">
+                                                <li><a className="dropdown-item" href="#">classic </a></li>
+                                                <li><a className="dropdown-item" href="#">default </a></li>
+                                                <li><a className="dropdown-item" href="#">blue</a></li>
+                                                <li><a className="dropdown-item" href="#">gray</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a className="dropdown-item" href="#">شخصی سازی تولبار</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li className="nav-item dropdown" id="myDropdown">
+                            <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">گزارش ها</a>
+                            <ul className="dropdown-menu dropdown-menu-end">
+                                <li> <a className="dropdown-item" href="#">دفتر کل</a></li>
+                                <li> <a className="dropdown-item" href="#">دفتر روزانه</a></li>
+                                <li> <a className="dropdown-item" href="#">خلاصه معاملات ارزی</a></li>
+                                <li> <a className="dropdown-item" href="#">سود روزانه ارز فروخته شده</a></li>
+                                <li> <a className="dropdown-item" href="#">&laquo;   سود و زیان  </a>
+                                    <ul className="submenu dropdown-menu dropdown-menu-end benefit-loss">
+                                        <li><a className="dropdown-item" href="#">سود و زیان کلی</a></li>
+                                        <li><a className="dropdown-item" href="#">سود و زیان ماهانه</a></li>
+                                        <li><a className="dropdown-item" href="#">گزارش تقسیم سود و زیان بین شرکا</a></li>
+                                    </ul>
+                                </li>
+                                <li><a className="dropdown-item" href="#">سرمایه</a></li>
+                                <li><a className="dropdown-item" href="#">تراز آزمایشی</a></li>
+                                <li><a className="dropdown-item" href="#">تراز نامه</a></li>
+                                <li> <a className="dropdown-item" href="#">&laquo;   بدهکاران و بستانکاران  </a>
+                                    <ul className="submenu dropdown-menu dropdown-menu-end debtors-creditors">
+                                        <li><a className="dropdown-item" href="#">لیست بدهکاران و بستانکاران</a></li>
+                                        <li><a className="dropdown-item" href="#">مجموع بدهکاران و بستانکاران</a></li>
+                                    </ul>
+                                </li>
+                                <li><a className="dropdown-item" href="#">تغییرات مانده حسابها</a></li>
+                                <li><a className="dropdown-item" href="#">لیست مشتریان</a></li>
+                                <li><a className="dropdown-item" href="#">گزارش هزینه ها و درآمد</a></li>
+                                <li><a className="dropdown-item border-down" href="#">مانده حسابهای مرتبط</a></li>
+                                <li><a className="dropdown-item" href="#">دریافت و پرداخت های روزانه</a></li>
+                                <li><a className="dropdown-item border-down" href="#">مانده بانک ها و صندوق ها</a></li>
+                                <li><a className="dropdown-item" href="#">گزارش عملکرد نمایندگان</a></li>
+                                <li><a className="dropdown-item" href="#">گزارش فعالیت کاربران</a></li>
+                            </ul>
+                        </li>
+                        <li className="nav-item dropdown" id="myDropdown">
+                            <a className="nav-link dropdown-toggle disabled" href="#" data-bs-toggle="dropdown">عملیات نفت</a>
+                            <ul className="dropdown-menu dropdown-menu-end">
+                                <li> <a className="dropdown-item" href="#">آیتم درون‌ریزی ۱</a></li>
+                            </ul>
+                        </li>
+                        <li className="nav-item dropdown" id="myDropdown">
+                            <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">پروسه ها</a>
+                            <ul className="dropdown-menu dropdown-menu-end">
+                                <li> <a className="dropdown-item" href="#">داشبورد کاربر</a></li>
+                                <li> <a className="dropdown-item" href="#">لیست معاملات روزانه</a></li>
+                                <li> <a className="dropdown-item" href="#">صورت حساب</a></li>
+                                <li> <a className="dropdown-item" href="#">مانده حساب</a></li>
+                                <li> <a className="dropdown-item" href="#">چک های دریافتی</a></li>
+                                <li> <a className="dropdown-item" href="#">&laquo;    چک های پرداختی </a>
+                                    <ul className="submenu dropdown-menu dropdown-menu-end payed-cheque">
+                                        <li><a className="dropdown-item" href="#">چکهای صادر شده</a></li>
+                                        <li><a className="dropdown-item" href="#">وضعیت دسته چک ها</a></li>
+                                    </ul>
+                                </li>
+                                <li><a className="dropdown-item" href="#">بازبینی اسناد</a></li>
+                                <li><a className="dropdown-item" href="#">لیست دستورات پرداخت</a></li>
+                                <li><a className="dropdown-item" href="#">پرداخت های به جای ما</a></li>
+                                <li><a className="dropdown-item" href="#">TT حواله های </a></li>
+                                <li><a className="dropdown-item border-down" href="#">Pending Vouchers</a></li>
+                                <li> <a className="dropdown-item" href="#">&laquo;      صدور حواله ها </a>
+                                    <ul className="submenu dropdown-menu dropdown-menu-end issue-list">
+                                        <li><a className="dropdown-item" href="#">صدور لیست جدید</a></li>
+                                        <li><a className="dropdown-item" href="#">لیستهای صادر شده</a></li>
+                                    </ul>
+                                </li>
+                                <li> <a className="dropdown-item border-down" href="#">&laquo;      دریافت حواله ها </a>
+                                    <ul className="submenu dropdown-menu dropdown-menu-end recieve-list">
+                                        <li><a className="dropdown-item" href="#">دریافت لیست حدید</a></li>
+                                        <li><a className="dropdown-item" href="#">لیست های دریافت شده</a></li>
+                                    </ul>
+                                </li>
+                                <li><a className="dropdown-item" href="#">حواله های ارسالی</a></li>
+                                <li><a className="dropdown-item border-down" href="#">حواله های دریافتی</a></li>
+                                <li><a className="dropdown-item" href="#">واریزهای بانکی مشتریان</a></li>
+                            </ul>
+                        </li>
+                        <li className="nav-item dropdown" id="myDropdown">
+                            <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">سند جدید</a>
+                            <ul className="dropdown-menu dropdown-menu-end">
+                                <li> <a className="dropdown-item" href="#">نقد و چک</a></li>
+                                <li> <a className="dropdown-item" href="#">عملیات بانکی</a></li>
+                                <li> <a className="dropdown-item" href="#">انتقال به حساب</a></li>
+                                <li> <a className="dropdown-item border-down" href="#">انتقال (پرداخت به جای ما)</a></li>
+                                <li> <a className="dropdown-item" href="#">خرید و فروش</a></li>
+                                <li> <a className="dropdown-item" href="#">خریپ و فروش دوگانه</a></li>
+                                <li> <a className="dropdown-item" href="#">ارسال حواله</a></li>
+                                <li> <a className="dropdown-item" href="#">دریافت حواله</a></li>
+                                <li> <a className="dropdown-item" href="#">(TT) ارسال حواله </a></li>
+                                <li> <a className="dropdown-item border-down" href="#">خرید و فروش نقدی</a></li>
+                                <li> <a className="dropdown-item" href="#">سند روزنامه</a></li>
+                                <li> <a className="dropdown-item" href="#">دستور پرداخت</a></li>
+                                <li> <a className="dropdown-item" href="#">کمیسیون همکار</a></li>
+                                <li> <a className="dropdown-item border-down disabled" href="#" >خرید و فروش دوگانه نفت</a></li>
+                                <li> <a className="dropdown-item" href="#">خرید و فروش طلا</a></li>
+                            </ul>
+                        </li>
+                        <li className="nav-item dropdown" id="myDropdown">
+                            <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">معرفی ها</a>
+                            <ul className="dropdown-menu dropdown-menu-end">
+                                <li> <a className="dropdown-item" href="#">&laquo;   حساب جدید </a>
+                                    <ul className="submenu dropdown-menu dropdown-menu-end">
+                                        <li><a className="dropdown-item" href="#">مشتری</a></li>
+                                        <li><a className="dropdown-item" href="#">صرافی</a></li>
+                                        <li><a className="dropdown-item" href="#">بانک</a></li>
+                                        <li><a className="dropdown-item" href="#">صندوق کاربر</a></li>
+                                        <li><a className="dropdown-item" href="#">خزانه</a></li>
+                                        <li><a className="dropdown-item" href="#">سایر حسابها</a></li>
+                                        <li><a className="dropdown-item" href="#">کارکنان و کارمندان</a></li>
+                                    </ul>
+                                </li>
+                                <li><a className="dropdown-item" href="#">دسته چک جدید </a></li>
+                                <li><a className="dropdown-item" href="#">گروه بندی مشتریان</a></li>
+                                <li><a className="dropdown-item" href="#">نرخ های پیش فرض</a></li>
+                                <li><a className="dropdown-item" href="#">حسابهای مرتبط</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     );
 }
-export default ResponsiveAppBar;
+
+export default Navbar;

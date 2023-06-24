@@ -1,5 +1,123 @@
-.subMenu{
-    justify-content: right;
-    text-align: right;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic&display=swap");
+// .subMenu{
+//     justify-content: right;
+//     text-align: right;
+
+//     width: 100%;
+//     font-size: 0.85rem !important;
+// }
+// .border-right{
+//     border-right: 2px solid #bab7b7 !important;
+//     height: 100%;
+//     margin-right: 2.4rem !important;
+//     font-size: 2px !important;
+// }
+
+.navbar-collapse {
+  justify-content: right;
+  text-align: right;
+  font-family: "Noto Sans Arabic", sans-serif;
+}
+.navbar-brand {
+  font-family: "Noto Sans Arabic", sans-serif;
+  font-size: 2.2 rem !important;
+}
+.dropdown-menu{
+    justify-content: right !important;
+    text-align: right !important;
+    font-size: 2 rem !important;
+    border-right: 2px solid #bab7b7 !important;
+}
+
+
+@media all and (min-width: 992px) {
+  .dropdown-menu li {
+  justify-content: right !important;
+  width: 100%;
+  font-size: 2.2 rem !important;
+  }
+  .nav-item .submenu {
+    display: none;
+    position: absolute;
+    right: 100%;
+    top: -7px;
+    justify-content: right !important;
+    font-size: 2.2 rem !important;
+  }
+  .nav-item .submenu-left {
+    left: auto;
+    right: 100%;
+  }
+  .dropdown-menu > li:hover {
+    background-color: #f1f1f1;
+  }
+  .dropdown-menu > li:hover > .submenu {
+    display: block;
+  }
+}
+.issue-list{
+  position: absolute;
+  top: 100%;
+  left: -11rem;
+  transform: translateY(23rem); 
+}
+.recieve-list{
+  position: absolute;
+  top: 100%;
+  left: -11rem;
+  transform: translateY(25rem); 
+}
+.payed-cheque{
+  position: absolute;
+  top: 100%;
+  left: -11rem;
+  transform: translateY(11rem);
+}
+.border-down{
+  border-bottom: 1px solid #bab7b7 !important;
+}
+.disabled{
+  pointer-events: none;
+  color: #999999;
+  cursor: default;
+}
+.benefit-loss{
+  position: absolute;
+  top: 100%;
+  transform: translateY(9rem);
+}
+.debtors-creditors{
+  position: absolute;
+  top: 100%;
+  transform: translateY(17rem);
+}
+.branch-management{
+  position: absolute;
+  top: 100%;
+  transform: translateY(3rem);
+}
+.personalization{
+  position: absolute;
+  top: 100%;
+  transform: translateY(11rem);
+}
+.messaging-service{
+  position: absolute;
+  top: 100%;
+  transform: translateY(3rem);
+}
+
+/* ============ desktop view .end// ============ */
+
+/* ============ small devices ============ */
+@media (max-width: 991px) {
+  .dropdown-menu .dropdown-menu-end {
+    margin-left: 0.7rem;
+    margin-right: 0.7rem;
+    margin-bottom: 0.5rem;
+    font-family: "Noto Sans Arabic", sans-serif;
+    justify-content: right !important;
+    text-align: right !important;
     width: 100%;
+  }
 }

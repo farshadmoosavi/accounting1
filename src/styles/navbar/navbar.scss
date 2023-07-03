@@ -1,11 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic&display=swap");
-// .subMenu{
-//     justify-content: right;
-//     text-align: right;
 
-//     width: 100%;
-//     font-size: 0.85rem !important;
-// }
 // .border-right{
 //     border-right: 2px solid #bab7b7 !important;
 //     height: 100%;
@@ -78,9 +72,10 @@
 }
 .disabled{
   pointer-events: none;
-  color: #999999;
+  color: #999999 !important;
   cursor: default;
 }
+
 .benefit-loss{
   position: absolute;
   top: 100%;
@@ -119,5 +114,6 @@
     justify-content: right !important;
     text-align: right !important;
     width: 100%;
+    font-size: 3rem !important;
   }
 }

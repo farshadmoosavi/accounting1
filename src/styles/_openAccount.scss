@@ -1,6 +1,11 @@
+
 .form-container {
   max-width: 800px;
   margin: auto;
+}
+
+.up{
+  margin-top: -2.6rem !important ;
 }
 
 .form-field {
@@ -8,7 +13,7 @@
 }
 
 .form-submit {
-  margin-top: 2rem;
+  margin-top: 1rem;
   text-align: center;
 }
 
@@ -110,4 +115,12 @@ select {
 
 .mini-double{
   margin-top: 3rem !important;
+}
+
+.center{
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-top: -0.5rem;
+  font-family: "Noto Sans Arabic", sans-serif;
 }

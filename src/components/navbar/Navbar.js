@@ -2,7 +2,7 @@ import React from 'react';
 
 const Navbar = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary navbar-right">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary navbar-right ">
             <div className="container-fluid ustify-content-end">
                 <a className="navbar-brand" href="#">حسابان</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,6 @@ const Navbar = () => {
                                         <li><a className="dropdown-item" href="#">ارسال مانده حسابها</a></li>
                                     </ul>
                                 </li>
-
                                 <li><a className="dropdown-item" href="#">Email</a></li>
                             </ul>
                         </li>
@@ -115,8 +114,8 @@ const Navbar = () => {
                                 <li><a className="dropdown-item" href="#">گزارش فعالیت کاربران</a></li>
                             </ul>
                         </li>
-                        <li className="nav-item dropdown" id="myDropdown">
-                            <a className="nav-link dropdown-toggle disabled" href="#" data-bs-toggle="dropdown">عملیات نفت</a>
+                        <li className="nav-item dropdown " id="myDropdown">
+                            <a className="nav-link dropdown-toggle disabled " href="#" data-bs-toggle="dropdown">عملیات نفت</a>
                             <ul className="dropdown-menu dropdown-menu-end">
                                 <li> <a className="dropdown-item" href="#">آیتم درون‌ریزی ۱</a></li>
                             </ul>
@@ -197,6 +196,7 @@ const Navbar = () => {
                                 <li><a className="dropdown-item" href="#">حسابهای مرتبط</a></li>
                             </ul>
                         </li>
+                        <li className="nav-item active"> <a className="nav-link " href="#">داشبورد کاربر</a> </li>
                     </ul>
                 </div>
             </div>

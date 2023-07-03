@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic&display=swap");
 
 .customer {
-  margin-top: 3rem ;
   font-family: "Noto Sans Arabic", sans-serif;
   //   justify-content: center;
   //   display: flex;
@@ -32,6 +31,7 @@
   }
   .card {
     min-height: 13rem;
+    margin-top: 0rem !important ;
   }
   .form {
     display: flex;

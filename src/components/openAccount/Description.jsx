@@ -1,14 +1,36 @@
 import React from "react";
+import TextField from "@mui/material/TextField";
+import { useContext } from "react";
+import { DescriptionContext } from "./DescriptionContextState";
 
 const Description = () => {
+
+
+  const [descriptionState, setDescriptionState] = useContext(DescriptionContext);
+
+  const handleDescriptionChange = (event) => {
+    setDescriptionState(event.target.value);
+  };
+
   return (
     <div className="description height">
-      <div className="card border-primary shadow">
-        <div className="card-body box">
-          <h4 className="component-title ">شرح </h4>
-          <hr className="blue-line" />
+      <div className="">
+        {/* <div className="card-body box"> */}
+          {/* <h4 className="component-title ">شرح </h4>
+          <hr className="blue-line" /> */}
+
+          <TextField
+            label="شرح"
+            multiline
+            rows={8}
+            value={descriptionState}
+            onChange={handleDescriptionChange}
+            fullWidth
+            inputProps={{ style: { textAlign: "right" } }}
+          />
+
         </div>
-      </div>
+      {/* </div> */}
     </div>
   );
 };

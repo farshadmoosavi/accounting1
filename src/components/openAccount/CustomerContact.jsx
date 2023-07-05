@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Nav, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
+import { useContext } from "react";
+import { ContactContext } from "./ContactContextState";
 
-const CustomerContact = () => {
+const CustomerContact = ({ children }) => {
+  
+  const [contactState, setContactState] = useContext(ContactContext);
+
   const [activeTab, setActiveTab] = useState("tab2");
 
   const toggleTab = (tab) => {
@@ -162,22 +167,22 @@ const CustomerContact = () => {
     { id: 2, kind: "خیلی ویژه" },
   ]);
 
-  const [state, setState] = useState({
-    mobilePhone: "",
-    landingPhone: "",
-    email: "",
-    country: "",
-    city: "",
-    address: "",
-    postalCode: "",
-    paymentLimit: null,
-    allowedAmountOfReference: "",
-    grouping: "",
-  });
+  // const [contactState, setContactState] = useState({
+  //   mobilePhone: "",
+  //   landingPhone: "",
+  //   email: "",
+  //   country: "",
+  //   city: "",
+  //   address: "",
+  //   postalCode: "",
+  //   paymentLimit: null,
+  //   allowedAmountOfReference: "",
+  //   grouping: "",
+  // });
 
   return (
     <div className="customer">
-       <h4 className="component-title">تماس </h4>
+      <h4 className="component-title">تماس </h4>
       <Nav tabs>
         <NavItem>
           <NavLink
@@ -187,7 +192,7 @@ const CustomerContact = () => {
             محدودیت سقف پرداخت
           </NavLink>
         </NavItem>
-        
+
         <NavItem>
           <NavLink
             className={activeTab === "tab3" ? "active" : ""}
@@ -209,8 +214,11 @@ const CustomerContact = () => {
         {/* محدودیت سقف پرداخت */}
         <TabPane tabId="tab1">
           <div className="row">
-            <div className=" ml-auto"> {/*col-lg-4  col-md-7*/}
-              <div className="card border-primary shadow">{/*my-3*/}
+            <div className=" ml-auto">
+              {" "}
+              {/*col-lg-4  col-md-7*/}
+              <div className="card border-primary shadow">
+                {/*my-3*/}
                 <div className="card-body border-primary">
                   {/* اعمال محدودیت */}
                   <div className="row mb-1 form">
@@ -220,10 +228,10 @@ const CustomerContact = () => {
                         id="paymentLimit"
                         name="paymentLimit"
                         className="form-control"
-                        value={state.paymentLimit}
+                        value={contactState.paymentLimit}
                         onChange={(e) =>
-                          setState({
-                            ...state,
+                          setContactState({
+                            ...contactState,
                             [e.target.name]: e.target.value,
                           })
                         }
@@ -252,10 +260,10 @@ const CustomerContact = () => {
                         name="allowedAmountOfReference"
                         type="text"
                         className="form-control"
-                        value={state.allowedAmountOfReference}
+                        value={contactState.allowedAmountOfReference}
                         onChange={(e) =>
-                          setState({
-                            ...state,
+                          setContactState({
+                            ...contactState,
                             [e.target.name]: e.target.value,
                           })
                         }
@@ -277,10 +285,10 @@ const CustomerContact = () => {
                         id="grouping"
                         name="grouping"
                         className="form-control"
-                        value={state.grouping}
+                        value={contactState.grouping}
                         onChange={(e) =>
-                          setState({
-                            ...state,
+                          setContactState({
+                            ...contactState,
                             [e.target.name]: e.target.value,
                           })
                         }
@@ -297,7 +305,9 @@ const CustomerContact = () => {
                       گروه بندی
                     </label>
                   </div>
-                  <div className="row mb-1 form"><div></div></div>
+                  <div className="row mb-1 form">
+                    <div></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -307,8 +317,10 @@ const CustomerContact = () => {
         {/* آدرس فعلی */}
         <TabPane tabId="tab2">
           <div className="row">
-            <div className="mx-auto">{/*col-lg-4  col-md-7*/}
-              <div className="card border-primary shadow">{/*my-3*/}
+            <div className="mx-auto">
+              {/*col-lg-4  col-md-7*/}
+              <div className="card border-primary shadow">
+                {/*my-3*/}
                 <div className="card-body border-primary">
                   {/* country  || کشور */}
                   <div className="row mb-1 form">
@@ -318,10 +330,10 @@ const CustomerContact = () => {
                         id="country"
                         name="country"
                         className="form-control"
-                        value={state.nationality}
+                        value={contactState.nationality}
                         onChange={(e) =>
-                          setState({
-                            ...state,
+                          setContactState({
+                            ...contactState,
                             [e.target.name]: e.target.value,
                           })
                         }
@@ -347,10 +359,10 @@ const CustomerContact = () => {
                         name="city"
                         type="text"
                         className="form-control"
-                        value={state.city}
+                        value={contactState.city}
                         onChange={(e) =>
-                          setState({
-                            ...state,
+                          setContactState({
+                            ...contactState,
                             [e.target.name]: e.target.value,
                           })
                         }
@@ -371,10 +383,10 @@ const CustomerContact = () => {
                         name="address"
                         type="text"
                         className="form-control"
-                        value={state.address}
+                        value={contactState.address}
                         onChange={(e) =>
-                          setState({
-                            ...state,
+                          setContactState({
+                            ...contactState,
                             [e.target.name]: e.target.value,
                           })
                         }
@@ -395,10 +407,10 @@ const CustomerContact = () => {
                         name="postalCode"
                         type="text"
                         className="form-control"
-                        value={state.postalCode}
+                        value={contactState.postalCode}
                         onChange={(e) =>
-                          setState({
-                            ...state,
+                          setContactState({
+                            ...contactState,
                             [e.target.name]: e.target.value,
                           })
                         }
@@ -417,8 +429,10 @@ const CustomerContact = () => {
         {/* تماس */}
         <TabPane tabId="tab3">
           <div className="row">
-            <div className=" mx-auto">{/*col-lg-4  col-md-7*/}
-              <div className="card border-primary shadow">{/*my-3*/}
+            <div className=" mx-auto">
+              {/*col-lg-4  col-md-7*/}
+              <div className="card border-primary shadow">
+                {/*my-3*/}
                 <div className="card-body border-primary">
                   {/* mobilePhoe  || موبایل */}
                   <div className="row mb-1 form">
@@ -429,10 +443,10 @@ const CustomerContact = () => {
                         name="mobilePhone"
                         type="text"
                         className="form-control"
-                        value={state.mobilePhone}
+                        value={contactState.mobilePhone}
                         onChange={(e) =>
-                          setState({
-                            ...state,
+                          setContactState({
+                            ...contactState,
                             [e.target.name]: e.target.value,
                           })
                         }
@@ -452,10 +466,10 @@ const CustomerContact = () => {
                         name="landingPhone"
                         type="text"
                         className="form-control"
-                        value={state.landingPhone}
+                        value={contactState.landingPhone}
                         onChange={(e) =>
-                          setState({
-                            ...state,
+                          setContactState({
+                            ...contactState,
                             [e.target.name]: e.target.value,
                           })
                         }
@@ -476,10 +490,10 @@ const CustomerContact = () => {
                         name="email"
                         type="text"
                         className="form-control"
-                        value={state.email}
+                        value={contactState.email}
                         onChange={(e) =>
-                          setState({
-                            ...state,
+                          setContactState({
+                            ...contactState,
                             [e.target.name]: e.target.value,
                           })
                         }

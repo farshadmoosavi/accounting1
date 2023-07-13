@@ -5,11 +5,10 @@ import { DescriptionContext } from "./DescriptionContextState";
 
 const Description = () => {
 
-
   const [descriptionState, setDescriptionState] = useContext(DescriptionContext);
 
   const handleDescriptionChange = (event) => {
-    setDescriptionState(event.target.value);
+    setDescriptionState({...descriptionState, Description:event.target.value});
   };
 
   return (
@@ -23,7 +22,7 @@ const Description = () => {
             label="شرح"
             multiline
             rows={8}
-            value={descriptionState}
+            value={descriptionState.Description}
             onChange={handleDescriptionChange}
             fullWidth
             inputProps={{ style: { textAlign: "right" } }}

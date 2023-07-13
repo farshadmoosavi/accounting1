@@ -3,8 +3,7 @@ import { Nav, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
 import { useContext } from "react";
 import { ContactContext } from "./ContactContextState";
 
-const CustomerContact = ({ children }) => {
-  
+const CustomerContact = () => {
   const [contactState, setContactState] = useContext(ContactContext);
 
   const [activeTab, setActiveTab] = useState("tab2");
@@ -15,15 +14,15 @@ const CustomerContact = ({ children }) => {
     }
   };
   const [nationalities, setnationalities] = useState([
-    { id: 0, countryName: "ایران" },
-    { id: 1, countryName: "افغانستان" },
+    { id: 0, countryName: " (اختیاری) انتخاب کنید" },
+    { id: 1, countryName: "ایران" },
     { id: 2, countryName: "چین" },
     { id: 3, countryName: "هندوستان" },
     { id: 4, countryName: "امارات متحده عربی" },
     { id: 5, countryName: "اتریش" },
     { id: 6, countryName: "استرالیا" },
     { id: 7, countryName: "ترکیه" },
-    { id: 8, countryName: "باهاما" },
+    { id: 8, countryName: "افغانستان" },
     { id: 9, countryName: "بحرین" },
     { id: 10, countryName: "بنگلادش" },
     { id: 11, countryName: "کانادا" },
@@ -157,28 +156,17 @@ const CustomerContact = ({ children }) => {
   ]);
 
   const [paymentLimits, setPaymentLimits] = useState([
-    { id: 0, kind: "اعمال شود" },
-    { id: 1, kind: "اعمال نشود" },
+    { id: 0, kind: " (اختیاری) انتخاب کنید" },
+    { id: 1, kind: "اعمال شود" },
+    { id: 2, kind: "اعمال نشود" },
   ]);
 
   const [groupings, setgroupings] = useState([
-    { id: 0, kind: "عادی" },
-    { id: 1, kind: "ویژه" },
-    { id: 2, kind: "خیلی ویژه" },
+    { id: 0, kind: "انتخاب کنید (اختباری)" },
+    { id: 1, kind: "عادی" },
+    { id: 2, kind: "ویژه" },
+    { id: 3, kind: "خیلی ویژه" },
   ]);
-
-  // const [contactState, setContactState] = useState({
-  //   mobilePhone: "",
-  //   landingPhone: "",
-  //   email: "",
-  //   country: "",
-  //   city: "",
-  //   address: "",
-  //   postalCode: "",
-  //   paymentLimit: null,
-  //   allowedAmountOfReference: "",
-  //   grouping: "",
-  // });
 
   return (
     <div className="customer">
@@ -225,10 +213,11 @@ const CustomerContact = ({ children }) => {
                     <div className="col-lg-2"></div>
                     <div className="col-lg-7">
                       <select
-                        id="paymentLimit"
-                        name="paymentLimit"
+                        id="Limting"
+                        name="Limting"
                         className="form-control"
-                        value={contactState.paymentLimit}
+                        value={contactState.Limting}
+                        defaultValue={paymentLimits[0].kind}
                         onChange={(e) =>
                           setContactState({
                             ...contactState,
@@ -238,8 +227,10 @@ const CustomerContact = ({ children }) => {
                       >
                         {paymentLimits.map((res) => (
                           <option
-                            key={"kindOfCustomer" + res.id}
-                            vlaue={res.id}
+                            key={"Limiting" + res.id}
+                            value={res.kind}
+                            selected={res.id === 0}
+                            disabled={res.id === 0}
                           >
                             {res.kind}
                           </option>
@@ -251,16 +242,22 @@ const CustomerContact = ({ children }) => {
                       اعمال محدودیت
                     </label>
                   </div>
-                  {/* allowedAmountOfReference  || مقدار مجاز به ارز مرجع */}
+                  {/* AllowedAmountCurrency  || مقدار مجاز به ارز مرجع */}
                   <div className="row mb-1 form">
                     <div className="col-lg-2"></div>
                     <div className="col-lg-7">
                       <input
-                        id="allowedAmountOfReference"
-                        name="allowedAmountOfReference"
+                        id="AllowedAmountCurrency"
+                        name="AllowedAmountCurrency"
                         type="text"
+                        placeholder="وارد کنید (اختیاری)"
+                        style={{ textAlign: "right" }}
                         className="form-control"
-                        value={contactState.allowedAmountOfReference}
+                        value={
+                          contactState.AllowedAmountCurrency === 0
+                            ? ""
+                            : contactState.AllowedAmountCurrency
+                        }
                         onChange={(e) =>
                           setContactState({
                             ...contactState,
@@ -270,10 +267,7 @@ const CustomerContact = ({ children }) => {
                       />
                     </div>
 
-                    <label
-                      className="col-lg-3"
-                      htmlFor="allowedAmountOfReference"
-                    >
+                    <label className="col-lg-3" htmlFor="AllowedAmountCurrency">
                       مقدار مجاز به ارز مرجع
                     </label>
                   </div>
@@ -327,10 +321,10 @@ const CustomerContact = ({ children }) => {
                     <div className="col-lg-2"></div>
                     <div className="col-lg-7">
                       <select
-                        id="country"
-                        name="country"
+                        id="Country"
+                        name="Country"
                         className="form-control"
-                        value={contactState.nationality}
+                        value={contactState.Country}
                         onChange={(e) =>
                           setContactState({
                             ...contactState,
@@ -338,8 +332,13 @@ const CustomerContact = ({ children }) => {
                           })
                         }
                       >
-                        {nationalities.map((res) => (
-                          <option key={"country" + res.id} vlaue={res.id}>
+                        {nationalities.map((res, index) => (
+                          <option
+                            key={"Country" + res.id}
+                            value={res.countryName}
+                            selected={index === 0}
+                            disabled={index === 0}
+                          >
                             {res.countryName}
                           </option>
                         ))}
@@ -355,11 +354,13 @@ const CustomerContact = ({ children }) => {
                     <div className="col-lg-2"></div>
                     <div className="col-lg-7">
                       <input
-                        id="city"
-                        name="city"
+                        id="City"
+                        name="City"
                         type="text"
+                        placeholder="وارد کنید (اختیاری)"
+                        style={{ textAlign: "right" }}
                         className="form-control"
-                        value={contactState.city}
+                        value={contactState.City}
                         onChange={(e) =>
                           setContactState({
                             ...contactState,
@@ -369,7 +370,7 @@ const CustomerContact = ({ children }) => {
                       />
                     </div>
 
-                    <label className="col-lg-3" htmlFor="city">
+                    <label className="col-lg-3" htmlFor="City">
                       شهر
                     </label>
                   </div>
@@ -379,11 +380,13 @@ const CustomerContact = ({ children }) => {
                     <div className="col-lg-2"></div>
                     <div className="col-lg-7">
                       <input
-                        id="address"
-                        name="address"
+                        id="Address"
+                        name="Address"
                         type="text"
+                        placeholder="وارد کنید (اختیاری)"
+                        style={{ textAlign: "right" }}
                         className="form-control"
-                        value={contactState.address}
+                        value={contactState.Address}
                         onChange={(e) =>
                           setContactState({
                             ...contactState,
@@ -393,7 +396,7 @@ const CustomerContact = ({ children }) => {
                       />
                     </div>
 
-                    <label className="col-lg-3" htmlFor="address">
+                    <label className="col-lg-3" htmlFor="Address">
                       آدرس
                     </label>
                   </div>
@@ -403,11 +406,17 @@ const CustomerContact = ({ children }) => {
                     <div className="col-lg-2"></div>
                     <div className="col-lg-7">
                       <input
-                        id="postalCode"
-                        name="postalCode"
+                        id="PostalCode"
+                        name="PostalCode"
+                        placeholder="وارد کنید (اختیاری)"
+                        style={{ textAlign: "right" }}
                         type="text"
                         className="form-control"
-                        value={contactState.postalCode}
+                        value={
+                          contactState.PostalCode === 0
+                            ? ""
+                            : contactState.PostalCode
+                        }
                         onChange={(e) =>
                           setContactState({
                             ...contactState,
@@ -417,7 +426,7 @@ const CustomerContact = ({ children }) => {
                       />
                     </div>
 
-                    <label className="col-lg-3" htmlFor="postalCode">
+                    <label className="col-lg-3" htmlFor="PostalCode">
                       کد پستی
                     </label>
                   </div>
@@ -439,11 +448,13 @@ const CustomerContact = ({ children }) => {
                     <div className="col-lg-2"></div>
                     <div className="col-lg-7">
                       <input
-                        id="mobilePhone"
-                        name="mobilePhone"
+                        id="MobilePhone"
+                        name="MobilePhone"
                         type="text"
+                        placeholder="وارد کنید (اختیاری)"
+                        style={{ textAlign: "right" }}
                         className="form-control"
-                        value={contactState.mobilePhone}
+                        value={contactState.MobilePhone}
                         onChange={(e) =>
                           setContactState({
                             ...contactState,
@@ -452,7 +463,7 @@ const CustomerContact = ({ children }) => {
                         }
                       />
                     </div>
-                    <label className="col-lg-3" htmlFor="mobilePhone">
+                    <label className="col-lg-3" htmlFor="MobilePhone">
                       موبایل
                     </label>
                   </div>
@@ -462,11 +473,13 @@ const CustomerContact = ({ children }) => {
                     <div className="col-lg-2"></div>
                     <div className="col-lg-7">
                       <input
-                        id="landingPhone"
-                        name="landingPhone"
+                        id="LandingPhone"
+                        name="LandingPhone"
                         type="text"
+                        placeholder="وارد کنید (اختیاری)"
+                        style={{ textAlign: "right" }}
                         className="form-control"
-                        value={contactState.landingPhone}
+                        value={contactState.LandingPhone}
                         onChange={(e) =>
                           setContactState({
                             ...contactState,
@@ -476,7 +489,7 @@ const CustomerContact = ({ children }) => {
                       />
                     </div>
 
-                    <label className="col-lg-3" htmlFor="landingPhone">
+                    <label className="col-lg-3" htmlFor="LandingPhone">
                       تلفن ثابت
                     </label>
                   </div>
@@ -486,11 +499,13 @@ const CustomerContact = ({ children }) => {
                     <div className="col-lg-2"></div>
                     <div className="col-lg-7">
                       <input
-                        id="email"
-                        name="email"
+                        id="Email"
+                        name="Email"
                         type="text"
+                        placeholder="وارد کنید (اختیاری)"
+                        style={{ textAlign: "right" }}
                         className="form-control"
-                        value={contactState.email}
+                        value={contactState.Email}
                         onChange={(e) =>
                           setContactState({
                             ...contactState,
@@ -500,7 +515,7 @@ const CustomerContact = ({ children }) => {
                       />
                     </div>
 
-                    <label className="col-lg-3" htmlFor="email">
+                    <label className="col-lg-3" htmlFor="Email">
                       ایمیل
                     </label>
                   </div>

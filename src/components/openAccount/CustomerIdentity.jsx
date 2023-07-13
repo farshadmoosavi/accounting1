@@ -1,50 +1,33 @@
 import React, { useState, useEffect } from "react";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import { Grid } from "@material-ui/core";
-import { createContext } from "react";
 import { IdentityContext } from "./IdentityContextState";
 import { useContext } from "react";
 
-
-const CustomerIdentity = ({ children }) => {
+const CustomerIdentity = () => {
   useEffect(() => {
     document.title = "افتتاح حساب مشتری";
   }, []);
   const [identityState, setIdentityState] = useContext(IdentityContext);
-
-  // const [identityState, setIdentityState] = useState({
-  //   kindOfCustomer: "",
-  //   fullName: "",
-  //   fatherName: "",
-  //   nationality: "",
-  //   typeOfIdentityCode: "",
-  //   placeOfIssue: "",
-  //   identityCode: "",
-  //   cardExpirationDate: null,
-  //   birthDay: "",
-  //   valueTaxNumber: "",
-  // });
 
   const [errors, setErrors] = useState({
     fullName: [],
   });
 
   const [kindOfCustomers, setKindOfCustomers] = useState([
-    { id: 0, kind: "حقیقی" },
-    { id: 1, kind: "حقوقی" },
+    { id: 0, kind: " (اجباری) انتخاب کنید" },
+    { id: 1, kind: "حقیقی" },
+    { id: 2, kind: "حقوقی" },
   ]);
 
   const [nationalities, setnationalities] = useState([
-    { id: 0, countryName: "ایران" },
-    { id: 1, countryName: "افغانستان" },
+    { id: 0, countryName: " (اختیاری) انتخاب کنید" },
+    { id: 1, countryName: "ایران" },
     { id: 2, countryName: "چین" },
     { id: 3, countryName: "هندوستان" },
     { id: 4, countryName: "امارات متحده عربی" },
     { id: 5, countryName: "اتریش" },
     { id: 6, countryName: "استرالیا" },
     { id: 7, countryName: "ترکیه" },
-    { id: 8, countryName: "باهاما" },
+    { id: 8, countryName: "افغانستان" },
     { id: 9, countryName: "بحرین" },
     { id: 10, countryName: "بنگلادش" },
     { id: 11, countryName: "کانادا" },
@@ -175,18 +158,19 @@ const CustomerIdentity = ({ children }) => {
     { id: 144, countryName: "ساحل عاج" },
     { id: 145, countryName: "اسکاتلند" },
     { id: 146, countryName: "جزایر قناری" },
+    { id: 147, countryName: "باهاما" },
   ]);
 
   const [placesOfIssue, setPlacesOfIssue] = useState([
-    { id: 0, countryName: "ایران" },
-    { id: 1, countryName: "افغانستان" },
+    { id: 0, countryName: " (اختیاری) انتخاب کنید" },
+    { id: 1, countryName: "ایران" },
     { id: 2, countryName: "چین" },
     { id: 3, countryName: "هندوستان" },
     { id: 4, countryName: "امارات متحده عربی" },
     { id: 5, countryName: "اتریش" },
     { id: 6, countryName: "استرالیا" },
     { id: 7, countryName: "ترکیه" },
-    { id: 8, countryName: "باهاما" },
+    { id: 8, countryName: "افغانستان" },
     { id: 9, countryName: "بحرین" },
     { id: 10, countryName: "بنگلادش" },
     { id: 11, countryName: "کانادا" },
@@ -317,18 +301,20 @@ const CustomerIdentity = ({ children }) => {
     { id: 144, countryName: "ساحل عاج" },
     { id: 145, countryName: "اسکاتلند" },
     { id: 146, countryName: "جزایر قناری" },
+    { id: 145, countryName: "باهاما" },
   ]);
 
   const [typesOfIdentityCode, setTypesOfIdentityCode] = useState([
-    { id: 0, type: "ندارد" },
-    { id: 1, type: "کارت ملی" },
-    { id: 2, type: "کارت اقامت" },
-    { id: 3, type: "گذرنامه" },
-    { id: 4, type: "کارت کار" },
-    { id: 5, type: "گواهینامه رانندگی" },
-    { id: 6, type: "بیمه" },
-    { id: 7, type: "کد ثبت" },
-    { id: 8, type: "سایر" },
+    { id: 0, type: " (اختیاری) انتخاب کنید" },
+    { id: 1, type: "ندارد" },
+    { id: 2, type: "کارت ملی" },
+    { id: 3, type: "کارت اقامت" },
+    { id: 4, type: "گذرنامه" },
+    { id: 5, type: "کارت کار" },
+    { id: 6, type: "گواهینامه رانندگی" },
+    { id: 7, type: "بیمه" },
+    { id: 8, type: "کد ثبت" },
+    { id: 9, type: "سایر" },
   ]);
 
   const validate = () => {
@@ -368,264 +354,327 @@ const CustomerIdentity = ({ children }) => {
   const ChoosePersianCalendar = () => {};
 
   return (
-      <div className="row identity">
-        <div className=" col-md-8">
-          <div className="card border-primary shadow">
-            <div className="card-body border-primary">
-              <h4 className="component-title">مشخصات مشتری</h4>
-              {/* kindOfCustomer || نوع مشتری */}
-              <div className="row mb-1">
-                <div className="col-lg-9">
-                  <select
-                    id="kindOfCustomer"
-                    name="kindOfCustomer"
-                    className="form-control"
-                    value={identityState.kindOfCustomer}
-                    onChange={(e) =>
-                      setIdentityState({ ...identityState, [e.target.name]: e.target.value })
-                    }
-                  >
-                    {kindOfCustomers.map((res) => (
-                      <option key={"kindOfCustomer" + res.id} vlaue={res.id}>
-                        {res.kind}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <label className="col-lg-3" htmlFor="kindOfCustomer">
-                  <span style={{ color: "red" }}>*</span> نوع مشتری
-                </label>
-              </div>
-
-              {/* fullName  || نام کامل */}
-              <div className="row mb-1">
-                <div className="col-lg-9">
-                  <input
-                    id="fullName"
-                    name="fullName"
-                    type="text"
-                    className="form-control"
-                    value={identityState.fullName}
-                    onChange={(e) =>
-                      setIdentityState({ ...identityState, [e.target.name]: e.target.value })
-                    }
-                    onBlur={(e) => {
-                      setDirty({ ...dirty, [e.target.name]: true });
-                      validate();
-                    }}
-                  />
-                  <div className="text-danger">
-                    {dirty["fullName"] && errors["fullName"][0]
-                      ? errors["fullName"]
-                      : ""}
-                  </div>
-                </div>
-
-                <label className="col-lg-3" htmlFor="fullName">
-                  <span style={{ color: "red" }}>*</span> نام کامل
-                </label>
-              </div>
-
-              {/* fatherName || نام پدر */}
-              <div className="row mb-1 form">
-                <div className="col-lg-9">
-                  <input
-                    id="fullName"
-                    name="fullName"
-                    type="text"
-                    className="form-control"
-                    value={identityState.fullName}
-                    onChange={(e) =>
-                      setIdentityState({ ...identityState, [e.target.name]: e.target.value })
-                    }
-                    onBlur={(e) => {
-                      setDirty({ ...dirty, [e.target.name]: true });
-                      validate();
-                    }}
-                  />
-                  <div className="text-danger">
-                    {dirty["fullName"] && errors["fullName"][0]
-                      ? errors["fullName"]
-                      : ""}
-                  </div>
-                </div>
-                <label className="col lg-3" htmlFor="fatherName">
-                  نام پدر
-                </label>
-              </div>
-
-              {/* nationality || ملیت  */}
-              <div dir="ltr" className="row mb-1 form">
-                <div className="col-lg-9">
-                  <select
-                    id="nationality"
-                    name="nationality"
-                    className="form-control"
-                    value={identityState.nationality}
-                    onChange={(e) =>
-                      setIdentityState({ ...identityState, [e.target.name]: e.target.value })
-                    }
-                  >
-                    {nationalities.map((res) => (
-                      <option key={"nationality" + res.id} vlaue={res.id}>
-                        {res.countryName}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <label className="col-lg-3" htmlFor="kindOfCustomer">
-                  ملیت
-                </label>
-              </div>
-
-              {/* typeOfIdentityCode || نوع کدشناسایی */}
-              <div dir="ltr" className="row mb-1 form">
-                <div className="col-lg-9">
-                  <select
-                    id="typeOfIdentityCode"
-                    name="typeOfIdentityCode"
-                    className="form-control"
-                    value={identityState.typeOfIdentityCode}
-                    onChange={(e) =>
-                      setIdentityState({ ...identityState, [e.target.name]: e.target.value })
-                    }
-                  >
-                    {typesOfIdentityCode.map((res) => (
-                      <option
-                        key={"typeOfIdentityCode" + res.id}
-                        vlaue={res.id}
-                      >
-                        {res.type}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <label className="col-lg-3" htmlFor="typeOfIdentityCode">
-                  نوع کد شناسایی
-                </label>
-              </div>
-
-              {/* placeOfIssue || محل صدور  */}
-              <div dir="ltr" className="row mb-1 form">
-                <div className="col-lg-9">
-                  <select
-                    id="placeOfIssue"
-                    name="placeOfIssue"
-                    className="form-control"
-                    value={identityState.placeOfIssue}
-                    onChange={(e) =>
-                      setIdentityState({ ...identityState, [e.target.name]: e.target.value })
-                    }
-                  >
-                    {placesOfIssue.map((res) => (
-                      <option key={"nationality" + res.id} vlaue={res.id}>
-                        {res.countryName}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <label className="col-lg-3" htmlFor="placeOfIssue">
-                  محل صدور
-                </label>
-              </div>
-
-              {/* identityCode || کد شناسایی */}
-              <div className="row mb-1 form">
-                <div className="col-lg-9">
-                  <input
-                    id="identityCode"
-                    name="identityCode"
-                    type="text"
-                    className="form-control"
-                    value={identityState.identityCode}
-                    onChange={(e) =>
-                      setIdentityState({ ...identityState, [e.target.name]: e.target.value })
-                    }
-                  />
-                </div>
-                <label className="col lg-3" htmlFor="identityCode">
-                  کد شناسایی
-                </label>
-              </div>
-
-              {/* cardExpirationDate || انقضای کارت */}
-              <div className="row mb-1 form">
-                <button
-                  className="btn btn-primary calendar-button"
-                  onClick={ChoosePersianCalendar}
+    <div className="row identity">
+      <div className=" col-md-8">
+        <div className="card border-primary shadow">
+          <div className="card-body border-primary">
+            <h4 className="component-title">مشخصات مشتری</h4>
+            {/* kindOfCustomer || نوع مشتری */}
+            <div className="row mb-1">
+              <div className="col-lg-9">
+                <select
+                  id="CustomerType"
+                  name="CustomerType"
+                  className="form-control"
+                  value={identityState.CustomerType}
+                  onChange={(e) =>
+                    setIdentityState({
+                      ...identityState,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
                 >
-                  تاریخ شمسی
-                </button>
-
-                <div className="col-lg-7 ">
-                  <input
-                    id="cardExpirationDate"
-                    name="cardExpirationDate"
-                    type="date"
-                    className="form-control"
-                    value={identityState.cardExpirationDate}
-                    onChange={(e) =>
-                      setIdentityState({ ...identityState, [e.target.name]: e.target.value })
-                    }
-                  />
-                </div>
-                <label className="col-lg-3" htmlFor="cardExpirationDate">
-                  انقضای کارت
-                </label>
+                  {kindOfCustomers.map((res, index) => (
+                    <option
+                      key={"CustomerType" + res.id}
+                      value={res.kind}
+                      disabled={index === 0}
+                      selected={index === 0}
+                    >
+                      {res.kind}
+                    </option>
+                  ))}
+                </select>
               </div>
 
-              {/* birthDay || تاریخ تولد*/}
-              <div className="row mb-1  form">
-                <button
-                  className="btn btn-primary calendar-button"
-                  onClick={ChoosePersianCalendar}
+              <label className="col-lg-3" htmlFor="CustomerType">
+                <span style={{ color: "red" }}>*</span> نوع مشتری
+              </label>
+            </div>
+
+            {/* fullName  || نام کامل */}
+            <div className="row mb-1">
+              <div className="col-lg-9">
+                <input
+                  id="FullName"
+                  name="FullName"
+                  type="text"
+                  className="form-control"
+                  value={identityState.FullName}
+                  placeholder=" (اجباری) وارد کنید"
+                  style={{ textAlign: "right" }}
+                  onChange={(e) =>
+                    setIdentityState({
+                      ...identityState,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                  onBlur={(e) => {
+                    setDirty({ ...dirty, [e.target.name]: true });
+                    validate();
+                  }}
+                />
+                {/* <div className="text-danger">
+                    {dirty["FullName"] && errors["FullName"][0]
+                      ? errors["FullName"]
+                      : ""}
+                  </div> */}
+              </div>
+
+              <label className="col-lg-3" htmlFor="FullName">
+                <span style={{ color: "red" }}>*</span> نام کامل
+              </label>
+            </div>
+
+            {/* fatherName || نام پدر */}
+            <div className="row mb-1 form">
+              <div className="col-lg-9">
+                <input
+                  id="FatherName"
+                  name="FatherName"
+                  type="text"
+                  placeholder=" (اختیاری) وارد کنید"
+                  style={{ textAlign: "right" }}
+                  className="form-control"
+                  value={identityState.FatherName}
+                  onChange={(e) =>
+                    setIdentityState({
+                      ...identityState,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                  onBlur={(e) => {
+                    setDirty({ ...dirty, [e.target.name]: true });
+                    validate();
+                  }}
+                />
+                {/* <div className="text-danger">
+                    {dirty["FatherName"] && errors["FatherName"][0]
+                      ? errors["FatherName"]
+                      : ""}
+                  </div> */}
+              </div>
+              <label className="col lg-3" htmlFor="FatherName">
+                نام پدر
+              </label>
+            </div>
+
+            {/* nationality || ملیت  */}
+            <div dir="ltr" className="row mb-1 form">
+              <div className="col-lg-9">
+                <select
+                  id="Nationality"
+                  name="Nationality"
+                  className="form-control"
+                  value={identityState.Nationality}
+                  onChange={(e) =>
+                    setIdentityState({
+                      ...identityState,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
                 >
-                  تاریخ شمسی
-                </button>
-
-                <div className="col-lg-7 ">
-                  <input
-                    id="birthDay"
-                    name="birthDay"
-                    type="date"
-                    className="form-control"
-                    value={identityState.birthDay}
-                    onChange={(e) =>
-                      setIdentityState({ ...identityState, [e.target.name]: e.target.value })
-                    }
-                  />
-                </div>
-                <label className="col-lg-3" htmlFor="birthDay">
-                  تاریخ تولد
-                </label>
+                  {nationalities.map((res, index) => (
+                    <option
+                      key={"nationalities" + res.id}
+                      value={res.countryName}
+                      disabled={index === 0}
+                      selected={index === 0}
+                    >
+                      {res.countryName}
+                    </option>
+                  ))}
+                </select>
               </div>
 
-              {/* valueTaxNumber || شماره مالیاتی ارزش */}
-              <div className="row mb-1 form">
-                <div className="col-lg-9">
-                  <input
-                    id="valueTaxNumber"
-                    name="valueTaxNumber"
-                    type="text"
-                    className="form-control"
-                    value={identityState.valueTaxNumber}
-                    onChange={(e) =>
-                      setIdentityState({ ...identityState, [e.target.name]: e.target.value })
-                    }
-                  />
-                </div>
-                <label className="col lg-3" htmlFor="valueTaxNumber">
-                  شماره مالیاتی ارزش
-                </label>
+              <label className="col-lg-3" htmlFor="Nationality">
+                ملیت
+              </label>
+            </div>
+
+            {/* typeOfIdentityCode || نوع کدشناسایی */}
+            <div dir="ltr" className="row mb-1 form">
+              <div className="col-lg-9">
+                <select
+                  id="IdentityCardType"
+                  name="IdentityCardType"
+                  className="form-control"
+                  value={identityState.IdentityCardType}
+                  onChange={(e) =>
+                    setIdentityState({
+                      ...identityState,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                >
+                  {typesOfIdentityCode.map((res, index) => (
+                    <option
+                      key={"typesOfIdentityCode" + res.id}
+                      value={res.type}
+                      disabled={index === 0}
+                      selected={index === 0}
+                    >
+                      {res.type}
+                    </option>
+                  ))}
+                </select>
               </div>
+
+              <label className="col-lg-3" htmlFor="IdentityCardType">
+                نوع کد شناسایی
+              </label>
+            </div>
+
+            {/* issuePlace || محل صدور  */}
+            <div dir="ltr" className="row mb-1 form">
+              <div className="col-lg-9">
+                <select
+                  id="issuePlace"
+                  name="issuePlace"
+                  className="form-control"
+                  value={identityState.issuePlace}
+                  onChange={(e) =>
+                    setIdentityState({
+                      ...identityState,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                >
+                  {placesOfIssue.map((res, index) => (
+                    <option
+                      key={"placesOfIssue" + res.id}
+                      value={res.countryName}
+                      disabled={index === 0}
+                      selected={index === 0}
+                    >
+                      {res.countryName}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <label className="col-lg-3" htmlFor="placeOfIssue">
+                محل صدور
+              </label>
+            </div>
+
+            {/* identityCode || کد شناسایی */}
+            <div className="row mb-1 form">
+              <div className="col-lg-9">
+                <input
+                  id="IdentityCode"
+                  name="IdentityCode"
+                  type="text"
+                  className="form-control"
+                  placeholder=" (اختیاری) وارد کنید"
+                  style={{ textAlign: "right" }}
+                  value={
+                    identityState.IdentityCode === 0
+                      ? ""
+                      : identityState.IdentityCode
+                  }
+                  onChange={(e) =>
+                    setIdentityState({
+                      ...identityState,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <label className="col lg-3" htmlFor="IdentityCode">
+                کد شناسایی
+              </label>
+            </div>
+
+            {/* cardExpirationDate || انقضای کارت */}
+            <div className="row mb-1 form">
+              <button
+                className="btn btn-primary calendar-button"
+                onClick={ChoosePersianCalendar}
+              >
+                تاریخ شمسی
+              </button>
+
+              <div className="col-lg-7 ">
+                <input
+                  id="CardExpiration"
+                  name="CardExpiration"
+                  type="date"
+                  className="form-control"
+                  value={identityState.CardExpiration}
+                  onChange={(e) =>
+                    setIdentityState({
+                      ...identityState,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <label className="col-lg-3" htmlFor="CardExpiration">
+                انقضای کارت
+              </label>
+            </div>
+
+            {/* birthDay || تاریخ تولد*/}
+            <div className="row mb-1  form">
+              <button
+                className="btn btn-primary calendar-button"
+                onClick={ChoosePersianCalendar}
+              >
+                تاریخ شمسی
+              </button>
+
+              <div className="col-lg-7 ">
+                <input
+                  id="Birthday"
+                  name="Birthday"
+                  type="date"
+                  className="form-control"
+                  value={identityState.Birthday}
+                  onChange={(e) =>
+                    setIdentityState({
+                      ...identityState,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <label className="col-lg-3" htmlFor="Birthday">
+                تاریخ تولد
+              </label>
+            </div>
+
+            {/* valueTaxNumber || شماره مالیاتی ارزش */}
+            <div className="row mb-1 form">
+              <div className="col-lg-9">
+                <input
+                  id="TaxValueNumber"
+                  name="TaxValueNumber"
+                  type="text"
+                  className="form-control"
+                  placeholder=" (اختیاری) وارد کنید"
+                  style={{ textAlign: "right" }}
+                  value={
+                    identityState.TaxValueNumber === 0
+                      ? ""
+                      : identityState.TaxValueNumber
+                  }
+                  onChange={(e) =>
+                    setIdentityState({
+                      ...identityState,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <label className="col lg-3" htmlFor="TaxValueNumber">
+                شماره مالیاتی ارزش
+              </label>
             </div>
           </div>
         </div>
       </div>
+    </div>
   );
 };
 

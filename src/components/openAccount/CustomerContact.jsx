@@ -162,7 +162,7 @@ const CustomerContact = () => {
   ]);
 
   const [groupings, setgroupings] = useState([
-    { id: 0, kind: "انتخاب کنید (اختباری)" },
+    { id: 0, kind: "انتخاب کنید (اختیاری)" },
     { id: 1, kind: "عادی" },
     { id: 2, kind: "ویژه" },
     { id: 3, kind: "خیلی ویژه" },
@@ -288,7 +288,12 @@ const CustomerContact = () => {
                         }
                       >
                         {groupings.map((res) => (
-                          <option key={"grouping" + res.id} vlaue={res.id}>
+                          <option
+                            key={"grouping" + res.id}
+                            value={res.kind}
+                            selected={res.id === 0}
+                            disabled={res.id === 0}
+                          >
                             {res.kind}
                           </option>
                         ))}
